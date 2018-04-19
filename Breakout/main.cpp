@@ -8,7 +8,7 @@
 #include <ios>
 #include <iostream>
 
-int main()
+int main() // Change test
 {
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
