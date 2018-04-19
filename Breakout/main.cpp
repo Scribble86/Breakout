@@ -10,6 +10,7 @@
 
 int main()
 {
+	//VNKNVKLDNV VF 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
 	uint32_t style = sf::Style::Close;
