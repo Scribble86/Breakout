@@ -33,6 +33,7 @@ int main()
 	sf::RectangleShape paddle = sf::RectangleShape(paddleSize);
 	paddle.setPosition(paddlePosition);
 	paddle.setFillColor(sf::Color::White);
+
 	//Donald Duck has Orange Feet
 	//test number two 
 
