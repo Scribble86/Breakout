@@ -1,10 +1,10 @@
 #include "Header.h"
 int main()
 {
-	sf::Vector2f boundSize(10000, 10000);
-	sf::Vector2f leftPos(-10000, -4200);
-	sf::Vector2f rightPos(600, -4200);
-	sf::Vector2f topPos(-4200, -10000);
+	sf::Vector2f boundSize(601, 601);
+	sf::Vector2f leftPos(-601, -1);
+	sf::Vector2f rightPos(601, 0);
+	sf::Vector2f topPos(0, -601);
 	sf::RectangleShape leftBound(boundSize);
 	leftBound.setPosition(leftPos);
 	sf::RectangleShape rightBound(boundSize);
@@ -60,7 +60,6 @@ int main()
 		if (ball.getPosition().x <= 0 || ball.getPosition().x >= (windowSize.x - ball.getRadius()))
 		{
 			ballMovement.x = -ballMovement.x;
-			ball.move(ballMovement);
 		}
 
 		if (ball.getPosition().y <= 0)
@@ -81,13 +80,28 @@ int main()
 			delay = 0;
 
 		}
-		if (delay > 10 && collisionDetect(leftBound, ball))
-		{
-			float angle = getAngle(leftBound, ball);
-			ballMovement.y = (speed * std::sin(angle));
-			ballMovement.x = speed * std::cos(angle);
-			delay = 0;
-		}
+		//if (delay > 10 && collisionDetect(leftBound, ball))
+		//{
+		//	float angle = getAngle(leftBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+		//if (delay > 10 && collisionDetect(topBound, ball))
+		//{
+		//	float angle = getAngle(topBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+		//if (delay > 10 && collisionDetect(rightBound, ball))
+		//{
+		//	float angle = getAngle(rightBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+
 		ball.move(ballMovement);
 		while (window.pollEvent(event))
 		{
