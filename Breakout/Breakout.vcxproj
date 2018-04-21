@@ -104,12 +104,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -142,14 +142,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>winmm.lib;jpeg.lib;freetype.lib;opengl32.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.libkernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -157,10 +157,46 @@
     <ClCompile Include="brick.cpp" />
     <ClCompile Include="displayBricks.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="testingRealm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="brick.h" />
+    <ClInclude Include="container.h" />
+    <ClInclude Include="Drawing.h" />
     <ClInclude Include="Header.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Debug\Breakout.tlog\Breakout.lastbuildstate" />
+    <None Include="Debug\Breakout.tlog\CL.command.1.tlog" />
+    <None Include="Debug\Breakout.tlog\CL.read.1.tlog" />
+    <None Include="Debug\Breakout.tlog\CL.write.1.tlog" />
+    <None Include="Debug\Breakout.tlog\link.command.1.tlog" />
+    <None Include="Debug\Breakout.tlog\link.read.1.tlog" />
+    <None Include="Debug\Breakout.tlog\link.write.1.tlog" />
+    <None Include="Debug\vc140.idb" />
+    <None Include="Debug\vc140.pdb" />
+    <None Include="x64\Debug\Breakout.tlog\Breakout.lastbuildstate" />
+    <None Include="x64\Debug\Breakout.tlog\CL.command.1.tlog" />
+    <None Include="x64\Debug\Breakout.tlog\CL.read.1.tlog" />
+    <None Include="x64\Debug\Breakout.tlog\CL.write.1.tlog" />
+    <None Include="x64\Debug\Breakout.tlog\link.command.1.tlog" />
+    <None Include="x64\Debug\Breakout.tlog\link.read.1.tlog" />
+    <None Include="x64\Debug\Breakout.tlog\link.write.1.tlog" />
+    <None Include="x64\Debug\Breakout.tlog\unsuccessfulbuild" />
+    <None Include="x64\Debug\vc140.idb" />
+    <None Include="x64\Debug\vc140.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Debug\Breakout.log" />
+    <Text Include="x64\Debug\Breakout.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Debug\brick.obj" />
+    <Object Include="Debug\displayBricks.obj" />
+    <Object Include="Debug\main.obj" />
+    <Object Include="x64\Debug\brick.obj" />
+    <Object Include="x64\Debug\displayBricks.obj" />
+    <Object Include="x64\Debug\main.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

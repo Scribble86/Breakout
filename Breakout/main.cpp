@@ -1,7 +1,8 @@
 #include "Header.h"
 int main()
 {
-	sf::RectangleShape leftBound(-1, 0);
+	sf::Vector2f leftSize(0.1, 0.1);
+	sf::RectangleShape leftBound(leftSize);
 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
