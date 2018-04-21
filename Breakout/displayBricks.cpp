@@ -1,7 +1,7 @@
 
 #include "brick.h"
 
-int displayBricks()
+int mains()
 {
 	sf::RenderWindow window(sf::VideoMode(600, 400), "Bricks");
 
