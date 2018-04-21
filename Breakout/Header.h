@@ -12,6 +12,7 @@
 #include <list>
 #include <iterator>
 #include "Drawing.h"
+#include "bricks.h"
 
-bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
+bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball, bricks &brickList);
 float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);

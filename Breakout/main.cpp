@@ -1,4 +1,5 @@
 #include "Header.h"
+
 int main()
 {
 	Drawing drawList;
@@ -28,10 +29,17 @@ int main()
 	paddle.setPosition(paddlePosition);
 	paddle.setFillColor(sf::Color::White);
 
-	//Donald Duck has Orange Feet
-	//test number two 
+	// Brick information
+	bricks brickL(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f(window.getSize().x*0.05, window.getSize().y*.025)));
+	brickL.setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y*.025)), window);
+
+	
+
 	int delay = 0;
 
+	drawList.insert(ball);
+	drawList.insert(paddle);
+	drawList.insert(brickL);
 	
 	while (window.isOpen())
 	{
@@ -65,7 +73,7 @@ int main()
 		float speed = sqrtf(pow(ballMovement.x, 2) + powf(ballMovement.y, 2));
 
 		//if (delay > 10 && ((ball.getPosition().y + (2*ball.getRadius())) >= paddle.getPosition().y) && (ball.getPosition().y + ball.getRadius()) <= (paddle.getPosition().y + paddle.getSize().y) && ball.getPosition().x >= paddle.getPosition().x && ball.getPosition().x <= (paddle.getPosition().x + paddle.getSize().x))
-		if(collisionDetect(paddle,ball))
+		if(collisionDetect(paddle,ball,brickL))
 		{
 			//split into more lines with more variables. find out why left side of paddle is not correct
 			
@@ -83,15 +91,16 @@ int main()
 		}
 		delay++;
 		window.clear();
-		window.draw(paddle);
-		window.draw(ball);
+		//window.draw(paddle);
+		//window.draw(ball);
+		drawList.letsDraw(window);
 		window.display();
 	}
 
 	return 0;
 }
 
-bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball)
+bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball, bricks &brickList)
 {
 	bool collide = false;
 	float ballLeftSide = ball.getPosition().x;
@@ -106,6 +115,15 @@ bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball)
 	{
 		collide = true;
 	}
+	/*for (int j = 0; j < 5; j++)
+	{
+		for (int i = 0; j < 20; i++)
+		{
+			if (ballBottomSide >= brickList[j][i].getPosition().x)
+				collide == true;
+			break;
+		}
+	}*/
 	
 	return collide;
 }
