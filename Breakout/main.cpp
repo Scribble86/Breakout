@@ -57,12 +57,12 @@ int main()
 		paddlePosition.x = mouseposition.x - windowPosition.x - (paddleSize.x/2);
 		paddle.setPosition(paddlePosition);
 
-		if (ball.getPosition().x <= 0 || ball.getPosition().x >= (windowSize.x - ball.getRadius()))
+		if (ball.getPosition().x <= 0 || ball.getPosition().x >= (windowSize.x - 2*ball.getRadius()))
 		{
 			ballMovement.x = -ballMovement.x;
 		}
 
-		if (ball.getPosition().y <= 0)
+		if (ball.getPosition().y <= 30)
 		{
 			ballMovement.y = -ballMovement.y;
 		}
