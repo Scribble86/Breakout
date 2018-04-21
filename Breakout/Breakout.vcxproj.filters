@@ -32,5 +32,11 @@
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Drawing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bricks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

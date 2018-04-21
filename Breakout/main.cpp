@@ -1,6 +1,7 @@
 #include "Header.h"
 int main()
 {
+	Drawing drawList;
 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
@@ -30,6 +31,8 @@ int main()
 	//Donald Duck has Orange Feet
 	//test number two 
 	int delay = 0;
+
+	
 	while (window.isOpen())
 	{
 		while(!window.hasFocus())
