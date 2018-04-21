@@ -1,15 +1,7 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Graphics/Shape.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <cstdio>
-#include <cstdlib>
-#include <ios>
-#include <iostream>
-
+#include "Header.h"
 int main()
 {
+
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
 	uint32_t style = sf::Style::Close;
@@ -17,12 +9,13 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(600, 400,8), "Breakout", style);
 	sf::Vector2u windowSize = window.getSize();
 	window.setMouseCursorVisible(false);
+	window.setFramerateLimit(60);
 	//window.setMouseCursorGrabbed(true);
 
 	sf::CircleShape ball = sf::CircleShape(7.0, 30);
 	ball.setPosition(*new sf::Vector2f(windowSize.x / 2, windowSize.y / 2));
 	ball.setFillColor(sf::Color::White);
-	sf::Vector2f ballMovement = sf::Vector2f(0.1, -0.1);
+	sf::Vector2f ballMovement = sf::Vector2f(1.5, -1.5);
 	
 	float paddleWidth = windowSize.x / 10;
 	float paddleHeight = windowSize.y / 30;
@@ -36,7 +29,7 @@ int main()
 
 	//Donald Duck has Orange Feet
 	//test number two 
-
+	int delay = 0;
 	while (window.isOpen())
 	{
 		while(!window.hasFocus())
@@ -53,14 +46,31 @@ int main()
 		paddle.setSize(paddleSize);
 		paddlePosition.x = mouseposition.x - windowPosition.x - (paddleSize.x/2);
 		paddle.setPosition(paddlePosition);
-		if (ball.getPosition().x <= 0 || ball.getPosition().x >= 600)
+
+		if (ball.getPosition().x <= 0 || ball.getPosition().x >= (windowSize.x - ball.getRadius()))
 		{
 			ballMovement.x = -ballMovement.x;
 			ball.move(ballMovement);
 		}
+
 		if (ball.getPosition().y <= 0)
 		{
 			ballMovement.y = -ballMovement.y;
+		}
+
+		
+		float speed = sqrtf(pow(ballMovement.x, 2) + powf(ballMovement.y, 2));
+
+		//if (delay > 10 && ((ball.getPosition().y + (2*ball.getRadius())) >= paddle.getPosition().y) && (ball.getPosition().y + ball.getRadius()) <= (paddle.getPosition().y + paddle.getSize().y) && ball.getPosition().x >= paddle.getPosition().x && ball.getPosition().x <= (paddle.getPosition().x + paddle.getSize().x))
+		if(collisionDetect(paddle,ball))
+		{
+			//split into more lines with more variables. find out why left side of paddle is not correct
+			
+			float angle = getAngle(paddle, ball);
+			ballMovement.y = -std::abs(speed * std::sin(angle));
+			ballMovement.x = speed * std::cos(angle);
+			delay = 0;
+
 		}
 		ball.move(ballMovement);
 		while (window.pollEvent(event))
@@ -68,7 +78,7 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-
+		delay++;
 		window.clear();
 		window.draw(paddle);
 		window.draw(ball);
@@ -76,4 +86,39 @@ int main()
 	}
 
 	return 0;
+}
+
+bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball)
+{
+	bool collide = false;
+	float ballLeftSide = ball.getPosition().x;
+	float ballTopSide = ball.getPosition().y;
+	float ballRightSide = ball.getPosition().x + (ball.getRadius() * 2);
+	float ballBottomSide = ball.getPosition().y + (ball.getRadius() * 2);
+	float paddleLeftSide = paddle.getPosition().x;
+	float paddleRightSide = paddle.getPosition().x + paddle.getSize().x;
+	float paddleTopSide = paddle.getPosition().y;
+	float paddleBottomSide = paddle.getPosition().y + paddle.getSize().y;
+	if (ballBottomSide >= paddleTopSide && ballTopSide < paddleBottomSide && ballRightSide >= paddleLeftSide && ballLeftSide <= paddleRightSide)
+	{
+		collide = true;
+	}
+	
+	return collide;
+}
+
+float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball)
+{
+	float relativePositionY = (ball.getPosition().y + ball.getRadius()) - (paddle.getPosition().y + (paddle.getSize().y /2 ));
+	float relativePositionX = ball.getPosition().x + ball.getRadius() - paddle.getPosition().x - (paddle.getSize().x / 2);
+	float BallPositionX = ball.getPosition().x + ball.getRadius();
+	float ballPositionY = ball.getPosition().y + ball.getRadius();
+	float paddlePositionX = paddle.getPosition().x + (paddle.getSize().x / 2);
+	float paddlePositionY = paddle.getPosition().y + (paddle.getSize().y / 2);
+
+	float angle = std::atan2f(relativePositionY,relativePositionX);
+
+	std::cout << "Relative Position: " << relativePositionX << " angle: " << angle << std::endl;
+
+	return angle;
 }
