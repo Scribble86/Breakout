@@ -119,7 +119,7 @@ int main()
 	return 0;
 }
 
-bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball, bricks &brickList)
+bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball)
 {
 	bool collide = false;
 	float ballLeftSide = ball.getPosition().x;
