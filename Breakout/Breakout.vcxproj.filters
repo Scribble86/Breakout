@@ -24,9 +24,6 @@
     <ClCompile Include="displayBricks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testingRealm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="brick.h">
@@ -41,38 +38,5 @@
     <ClInclude Include="Drawing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Debug\Breakout.tlog\link.command.1.tlog" />
-    <None Include="Debug\Breakout.tlog\Breakout.lastbuildstate" />
-    <None Include="Debug\Breakout.tlog\CL.command.1.tlog" />
-    <None Include="Debug\Breakout.tlog\CL.read.1.tlog" />
-    <None Include="Debug\Breakout.tlog\CL.write.1.tlog" />
-    <None Include="Debug\Breakout.tlog\link.read.1.tlog" />
-    <None Include="Debug\Breakout.tlog\link.write.1.tlog" />
-    <None Include="Debug\vc140.idb" />
-    <None Include="Debug\vc140.pdb" />
-    <None Include="x64\Debug\Breakout.tlog\Breakout.lastbuildstate" />
-    <None Include="x64\Debug\Breakout.tlog\CL.command.1.tlog" />
-    <None Include="x64\Debug\Breakout.tlog\CL.read.1.tlog" />
-    <None Include="x64\Debug\Breakout.tlog\CL.write.1.tlog" />
-    <None Include="x64\Debug\Breakout.tlog\link.command.1.tlog" />
-    <None Include="x64\Debug\Breakout.tlog\link.read.1.tlog" />
-    <None Include="x64\Debug\Breakout.tlog\link.write.1.tlog" />
-    <None Include="x64\Debug\Breakout.tlog\unsuccessfulbuild" />
-    <None Include="x64\Debug\vc140.idb" />
-    <None Include="x64\Debug\vc140.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Debug\Breakout.log" />
-    <Text Include="x64\Debug\Breakout.log" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="Debug\brick.obj" />
-    <Object Include="Debug\displayBricks.obj" />
-    <Object Include="Debug\main.obj" />
-    <Object Include="x64\Debug\brick.obj" />
-    <Object Include="x64\Debug\displayBricks.obj" />
-    <Object Include="x64\Debug\main.obj" />
   </ItemGroup>
 </Project>

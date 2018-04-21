@@ -14,3 +14,4 @@
 
 bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
 float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);
+sf::Vector2f bounceBall(sf::CircleShape ball, float angle, float speed);

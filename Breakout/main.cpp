@@ -1,8 +1,16 @@
 #include "Header.h"
 int main()
 {
-	sf::Vector2f leftSize(0.1, 0.1);
-	sf::RectangleShape leftBound(leftSize);
+	sf::Vector2f boundSize(10000, 10000);
+	sf::Vector2f leftPos(-10000, -4200);
+	sf::Vector2f rightPos(600, -4200);
+	sf::Vector2f topPos(-4200, -10000);
+	sf::RectangleShape leftBound(boundSize);
+	leftBound.setPosition(leftPos);
+	sf::RectangleShape rightBound(boundSize);
+	rightBound.setPosition(rightPos);
+	sf::RectangleShape topBound(boundSize);
+	topBound.setPosition(topPos);
 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
@@ -64,15 +72,21 @@ int main()
 		float speed = sqrtf(pow(ballMovement.x, 2) + powf(ballMovement.y, 2));
 
 		//if (delay > 10 && ((ball.getPosition().y + (2*ball.getRadius())) >= paddle.getPosition().y) && (ball.getPosition().y + ball.getRadius()) <= (paddle.getPosition().y + paddle.getSize().y) && ball.getPosition().x >= paddle.getPosition().x && ball.getPosition().x <= (paddle.getPosition().x + paddle.getSize().x))
-		if(collisionDetect(paddle,ball))
+		if(delay > 10 && collisionDetect(paddle,ball))
 		{
 			//split into more lines with more variables. find out why left side of paddle is not correct
 			
 			float angle = getAngle(paddle, ball);
+			ballMovement = bounceBall(ball, angle, speed);
+			delay = 0;
+
+		}
+		if (delay > 10 && collisionDetect(leftBound, ball))
+		{
+			float angle = getAngle(leftBound, ball);
 			ballMovement.y = (speed * std::sin(angle));
 			ballMovement.x = speed * std::cos(angle);
 			delay = 0;
-
 		}
 		ball.move(ballMovement);
 		while (window.pollEvent(event))
@@ -123,4 +137,12 @@ float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball)
 	std::cout << "Relative Position: " << relativePositionX << " angle: " << angle << std::endl;
 
 	return angle;
+}
+
+sf::Vector2f bounceBall(sf::CircleShape ball, float angle, float speed)
+{
+	sf::Vector2f ballMovement = sf::Vector2f(0,0);
+	ballMovement.y = (speed * std::sin(angle));
+	ballMovement.x = speed * std::cos(angle);
+	return ballMovement;
 }
