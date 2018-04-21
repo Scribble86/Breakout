@@ -1,16 +1,8 @@
 #include "Header.h"
+
 int main()
 {
-	sf::Vector2f boundSize(10000, 10000);
-	sf::Vector2f leftPos(-10000, -4200);
-	sf::Vector2f rightPos(600, -4200);
-	sf::Vector2f topPos(-4200, -10000);
-	sf::RectangleShape leftBound(boundSize);
-	leftBound.setPosition(leftPos);
-	sf::RectangleShape rightBound(boundSize);
-	rightBound.setPosition(rightPos);
-	sf::RectangleShape topBound(boundSize);
-	topBound.setPosition(topPos);
+	Drawing drawList;
 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
@@ -37,9 +29,17 @@ int main()
 	paddle.setPosition(paddlePosition);
 	paddle.setFillColor(sf::Color::White);
 
-	//Donald Duck has Orange Feet
-	//test number two 
+	// Brick information
+	bricks brickL(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f(window.getSize().x*0.05, window.getSize().y*.025)));
+	brickL.setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y*.025)), window);
+
+
 	int delay = 0;
+
+	drawList.insert(ball);
+	drawList.insert(paddle);
+	drawList.insert(brickL);
+	
 	while (window.isOpen())
 	{
 		while(!window.hasFocus())
@@ -60,7 +60,6 @@ int main()
 		if (ball.getPosition().x <= 0 || ball.getPosition().x >= (windowSize.x - ball.getRadius()))
 		{
 			ballMovement.x = -ballMovement.x;
-			ball.move(ballMovement);
 		}
 
 		if (ball.getPosition().y <= 0)
@@ -81,13 +80,28 @@ int main()
 			delay = 0;
 
 		}
-		if (delay > 10 && collisionDetect(leftBound, ball))
-		{
-			float angle = getAngle(leftBound, ball);
-			ballMovement.y = (speed * std::sin(angle));
-			ballMovement.x = speed * std::cos(angle);
-			delay = 0;
-		}
+		//if (delay > 10 && collisionDetect(leftBound, ball))
+		//{
+		//	float angle = getAngle(leftBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+		//if (delay > 10 && collisionDetect(topBound, ball))
+		//{
+		//	float angle = getAngle(topBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+		//if (delay > 10 && collisionDetect(rightBound, ball))
+		//{
+		//	float angle = getAngle(rightBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+
 		ball.move(ballMovement);
 		while (window.pollEvent(event))
 		{
@@ -96,8 +110,9 @@ int main()
 		}
 		delay++;
 		window.clear();
-		window.draw(paddle);
-		window.draw(ball);
+		//window.draw(paddle);
+		//window.draw(ball);
+		drawList.letsDraw(window);
 		window.display();
 	}
 
