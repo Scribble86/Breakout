@@ -1,16 +1,6 @@
 #include "Header.h"
 int main()
 {
-	sf::Vector2f boundSize(601, 601);
-	sf::Vector2f leftPos(-601, -1);
-	sf::Vector2f rightPos(601, 0);
-	sf::Vector2f topPos(0, -601);
-	sf::RectangleShape leftBound(boundSize);
-	leftBound.setPosition(leftPos);
-	sf::RectangleShape rightBound(boundSize);
-	rightBound.setPosition(rightPos);
-	sf::RectangleShape topBound(boundSize);
-	topBound.setPosition(topPos);
 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
