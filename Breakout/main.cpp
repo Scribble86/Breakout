@@ -1,6 +1,7 @@
 #include "Header.h"
 int main()
 {
+	sf::RectangleShape leftBound(-1, 0);
 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
@@ -67,7 +68,7 @@ int main()
 			//split into more lines with more variables. find out why left side of paddle is not correct
 			
 			float angle = getAngle(paddle, ball);
-			ballMovement.y = -std::abs(speed * std::sin(angle));
+			ballMovement.y = (speed * std::sin(angle));
 			ballMovement.x = speed * std::cos(angle);
 			delay = 0;
 
