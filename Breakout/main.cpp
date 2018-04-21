@@ -33,7 +33,6 @@ int main()
 	bricks brickL(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f(window.getSize().x*0.05, window.getSize().y*.025)));
 	brickL.setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y*.025)), window);
 
-	
 
 	int delay = 0;
 
@@ -115,15 +114,6 @@ bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball, bricks &
 	{
 		collide = true;
 	}
-	/*for (int j = 0; j < 5; j++)
-	{
-		for (int i = 0; j < 20; i++)
-		{
-			if (ballBottomSide >= brickList[j][i].getPosition().x)
-				collide == true;
-			break;
-		}
-	}*/
 	
 	return collide;
 }
