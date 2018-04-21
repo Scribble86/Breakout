@@ -60,7 +60,6 @@ int main()
 		if (ball.getPosition().x <= 0 || ball.getPosition().x >= (windowSize.x - ball.getRadius()))
 		{
 			ballMovement.x = -ballMovement.x;
-			ball.move(ballMovement);
 		}
 
 		if (ball.getPosition().y <= 0)
@@ -81,13 +80,28 @@ int main()
 			delay = 0;
 
 		}
-		if (delay > 10 && collisionDetect(leftBound, ball))
-		{
-			float angle = getAngle(leftBound, ball);
-			ballMovement.y = (speed * std::sin(angle));
-			ballMovement.x = speed * std::cos(angle);
-			delay = 0;
-		}
+		//if (delay > 10 && collisionDetect(leftBound, ball))
+		//{
+		//	float angle = getAngle(leftBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+		//if (delay > 10 && collisionDetect(topBound, ball))
+		//{
+		//	float angle = getAngle(topBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+		//if (delay > 10 && collisionDetect(rightBound, ball))
+		//{
+		//	float angle = getAngle(rightBound, ball);
+		//	ballMovement.y = (speed * std::sin(angle));
+		//	ballMovement.x = speed * std::cos(angle);
+		//	delay = 0;
+		//}
+
 		ball.move(ballMovement);
 		while (window.pollEvent(event))
 		{
