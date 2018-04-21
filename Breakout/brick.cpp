@@ -27,4 +27,3 @@ void brick::printBricks(sf::RectangleShape brickArr[], sf::RenderWindow &window)
 		}
 	}
 }
-
