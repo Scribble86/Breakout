@@ -112,6 +112,7 @@ int main()
 		window.clear();
 		//window.draw(paddle);
 		//window.draw(ball);
+		//displayScore(score); // ***FIX*** function deleting bricks needs to return score
 		drawList.letsDraw(window);
 		window.display();
 	}
@@ -160,4 +161,34 @@ sf::Vector2f bounceBall(sf::CircleShape ball, float angle, float speed)
 	ballMovement.y = (speed * std::sin(angle));
 	ballMovement.x = speed * std::cos(angle);
 	return ballMovement;
+}
+
+int incScore() // needs to be called when brick is deleted
+{
+	int score = 0;
+	score += 5;
+	return score;
+}
+
+std::string displayScore(int score, sf::RenderWindow &window)
+{
+	sf::Font font;
+	if (!font.loadFromFile("arial.ttf"))
+	{
+		// error...
+	}
+
+	sf::Text text;
+
+	std::string str_score = std::to_string(score);
+
+	text.setFont(font);
+	text.setString(str_score);
+	text.setCharacterSize(24);
+	text.setFillColor(sf::Color::Green);
+	text.setStyle(sf::Text::Underlined);
+
+	window.draw(text);
+
+	return str_score;
 }
