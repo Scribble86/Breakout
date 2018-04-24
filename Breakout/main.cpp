@@ -84,11 +84,19 @@ int main()
 		for (std::vector<sf::RectangleShape*>::iterator li = drawList.getRectDrawingBegin()->begin();
 			li != drawList.getRectDrawingBegin()->end(); li++)
 		{
-			if (collisionDetect(ball, *drawList.getRectDrawingBegin()->at(count)))
+			if (collisionDetect(*drawList.getRectDrawingBegin()->at(count), ball))
 			{
 			//	drawList.getRectDrawingBegin()->erase(drawList.getRectDrawingBegin()->at(count));
+				//float angle = getAngle(*drawList.getRectDrawingBegin()->at(count), ball);
+				float angle;
+
+				if ((ball.getPosition().y - ball.getRadius()) < drawList.getRectDrawingBegin()->at(count)->getPosition().y && (ball.getPosition().y - ball.getRadius()) > (drawList.getRectDrawingBegin()->at(count)->getPosition().y) + drawList.getRectDrawingBegin()->at(count)->getSize().y)
+					float angle = atan2f(ballMovement.y, -ballMovement.x);
+				else
+					float angle = atan2f(-ballMovement.y, ballMovement.x);
+
 				drawList.getRectDrawingBegin()->erase(li);
-				float angle = atan2f(-ballMovement.y, ballMovement.x);
+				
 				ballMovement = bounceBall(ball, angle, speed);
 				delay = 0;
 				std::cout << "brick detect" << std::endl;
@@ -149,7 +157,8 @@ bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball)
 	float paddleRightSide = paddle.getPosition().x + paddle.getSize().x;
 	float paddleTopSide = paddle.getPosition().y;
 	float paddleBottomSide = paddle.getPosition().y + paddle.getSize().y;
-	if (ballBottomSide >= paddleTopSide && ballTopSide < paddleBottomSide && ballRightSide >= paddleLeftSide && ballLeftSide <= paddleRightSide)
+
+	if (ballBottomSide >= paddleTopSide && ballTopSide <= paddleBottomSide && ballRightSide >= paddleLeftSide && ballLeftSide <= paddleRightSide)
 	{
 		collide = true;
 	}
@@ -170,10 +179,22 @@ bool collisionDetect(/*bricks &bricks,*/ sf::CircleShape &ball, sf::RectangleSha
 	float ballRightSide = ball.getPosition().x + (ball.getRadius() * 2);
 	float ballBottomSide = ball.getPosition().y + (ball.getRadius() * 2);
 
-	if (ball.getPosition().y <= brick.getPosition().y+10 && (ball.getPosition().x >= brick.getPosition().x) && (ball.getPosition().x >= brick.getPosition().x + brick.getSize().x))
+	if ((ball.getPosition().y <= brick.getPosition().y + brick.getSize().y) && (ball.getPosition().x > brick.getPosition().x) && (ball.getPosition().x < brick.getPosition().x + brick.getSize().x))
 	{
 		collide = true;
 	}
+	//else if (((ball.getPosition().y + 2*ball.getRadius() <= brick.getPosition().y) && (ball.getPosition().x > brick.getPosition().x) && (ball.getPosition().x < brick.getPosition().x + brick.getSize().x)))
+	//{
+	//	collide = true;
+	//}
+	else if (((ball.getPosition().x + ball.getRadius() <= brick.getPosition().x) && (ball.getPosition().y > brick.getPosition().y && (ball.getPosition().y + ball.getRadius() < brick.getPosition().y + brick.getSize().y))))
+	{
+		collide = true;
+	}
+	/*else if (((ball.getPosition().x >= brick.getPosition().x + brick.getSize().x) && (ball.getPosition().y <= brick.getPosition().y && (ball.getPosition().y < brick.getPosition().y + brick.getSize().y))))
+	{
+		collide = true;
+	}*/
 		
 	//for (std::vector<sf::RectangleShape*>::iterator li = DrawList.getRectDrawingBegin()->begin();
 	//	li != DrawList.getRectDrawingBegin()->end(); li++)
@@ -245,4 +266,30 @@ sf::Vector2f bounceBall(sf::CircleShape ball, float angle, float speed)
 	ballMovement.y = (speed * std::sin(angle));
 	ballMovement.x = speed * std::cos(angle);
 	return ballMovement;
+}
+
+bool brickBounce(sf::CircleShape &ball, sf::RectangleShape &brick)
+{
+	float angle;
+
+	float ballCenterX = ball.getPosition().x + ball.getRadius();
+	float ballCenterY = ball.getPosition().y + ball.getRadius();
+
+	float brickTop = brick.getPosition().y/* + (brick.getSize().x / 2)*/;
+	float brickBottom = brick.getPosition().y + brick.getSize().y;
+	float brickLeft = brick.getPosition().x;
+	float brickRight = brick.getPosition().x + brick.getSize().x;
+
+	//if (brickBottom < ballCenterY)
+	//	angle = tanf
+	//else if (brickTop < ballCenterY)
+	//	bounce = true;
+	//else if (brickLeft > ballCenterX)
+	//	bounce = true;
+	//else if (brickRight < ballCenterX)
+	//	bounce = true;
+	//else
+	//	bounce = false;
+
+	return true;
 }
