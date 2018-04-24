@@ -12,11 +12,10 @@
 #include <list>
 #include <iterator>
 #include "ball.h"
-#include "bricks.h"
-#include "Drawing.h"
-#include <list>
+//#include "bricks.h"
+//#include "Drawing.h"
+#include "game.h"
 
-bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
-bool collisionDetect(sf::CircleShape &ball, sf::RectangleShape &brick);
-float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);
-sf::Vector2f bounceBall(sf::CircleShape ball, float angle, float speed);
+//bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
+//float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);
+//sf::Vector2f bounceBall(sf::CircleShape ball, float angle, float speed);
