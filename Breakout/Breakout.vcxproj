@@ -157,13 +157,16 @@
   <ItemGroup>
     <ClCompile Include="brick.cpp" />
     <ClCompile Include="displayBricks.cpp" />
+    <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ball.h" />
+    <ClInclude Include="brick.h" />
     <ClInclude Include="bricks.h" />
     <ClInclude Include="container.h" />
     <ClInclude Include="Drawing.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

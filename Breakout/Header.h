@@ -14,6 +14,7 @@
 #include "ball.h"
 #include "bricks.h"
 #include "Drawing.h"
+#include "game.h"
 
 bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
 float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);
