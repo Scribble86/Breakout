@@ -170,6 +170,7 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="ball.h" />
+    <ClInclude Include="brick.h" />
     <ClInclude Include="bricks.h" />
     <ClInclude Include="container.h" />
     <ClInclude Include="Drawing.h" />
