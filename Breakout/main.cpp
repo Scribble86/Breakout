@@ -2,13 +2,15 @@
 
 int main()
 {
+	uint32_t style = sf::Style::Close;
+
+	sf::RenderWindow window(sf::VideoMode(600, 400,8), "Breakout", style);
+
 	Drawing drawList;
 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
-	uint32_t style = sf::Style::Close;
 
-	sf::RenderWindow window(sf::VideoMode(600, 400,8), "Breakout", style);
 	sf::Vector2u windowSize = window.getSize();
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(160);
