@@ -14,7 +14,7 @@
 #include "ball.h"
 #include "bricks.h"
 #include "Drawing.h"
-#include <list>
+#include "game.h"
 
 bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
 bool collisionDetect(sf::CircleShape &ball, sf::RectangleShape &brick);

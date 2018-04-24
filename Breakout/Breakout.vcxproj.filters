@@ -24,6 +24,33 @@
     <ClCompile Include="displayBricks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sfml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="testingRealm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
@@ -41,5 +68,60 @@
     <ClInclude Include="bricks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imputManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="instructions.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pixelball.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="play.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="play.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pp.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pp1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pp2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ppins.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="rules.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pixelball" />
+    <None Include="pixelball2" />
+    <None Include="texture" />
   </ItemGroup>
 </Project>

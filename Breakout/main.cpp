@@ -2,12 +2,15 @@
 
 int main()
 {
+	uint32_t style = sf::Style::Close;
+
+	sf::RenderWindow window(sf::VideoMode(600, 400,8), "Breakout", style);
+
 	Drawing drawList;
 	Drawing paddleD;
 
 	sf::Vector2i mouseposition;
 	sf::Vector2i windowPosition;
-	uint32_t style = sf::Style::Close;
 
 	sf::RenderWindow window(sf::VideoMode(600, 400, 8), "Breakout", style);
 	sf::Vector2u windowSize = window.getSize();
@@ -16,10 +19,15 @@ int main()
 	//window.setMouseCursorGrabbed(true);
 
 	sf::CircleShape ball = sf::CircleShape(7.0, 30);
-	ball.setPosition(*new sf::Vector2f(windowSize.x / 2, windowSize.y / 2));
+	sf::Vector2f ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
+	ball.setPosition(ballStart);
 	ball.setFillColor(sf::Color::White);
 	sf::Vector2f ballMovement = sf::Vector2f(1.5, -1.5);
 
+	sf::Vector2f ballMoving = sf::Vector2f(1.5, -1.5);
+	sf::Vector2f ballStopped = sf::Vector2f(0, 0);
+	sf::Vector2f ballMovement = ballMoving;
+	
 	float paddleWidth = windowSize.x / 10;
 	float paddleHeight = windowSize.y / 30;
 	sf::Vector2f paddleSize(paddleWidth, paddleHeight);
@@ -65,6 +73,11 @@ int main()
 		if (ball.getPosition().y <= 30)
 		{
 			ballMovement.y = -ballMovement.y;
+		}
+		if (ball.getPosition().y >= 400)
+		{
+			ball.setPosition(ballStart);
+			ballMovement = ballStopped;
 		}
 
 
