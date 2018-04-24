@@ -14,7 +14,9 @@
 #include "ball.h"
 #include "bricks.h"
 #include "Drawing.h"
+#include <list>
 
 bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
+bool collisionDetect(bricks &bricks, sf::CircleShape &ball, Drawing &DrawList);
 float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);
 sf::Vector2f bounceBall(sf::CircleShape ball, float angle, float speed);

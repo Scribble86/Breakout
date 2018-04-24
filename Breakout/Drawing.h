@@ -23,6 +23,11 @@ public:
 
 	void letsDraw(sf::RenderWindow &window);
 
+	std::list <RectangleShape*> *getRectDrawingBegin()
+	{
+		return &this->rectDrawings;
+	}
+
 private:
 	std::list <RectangleShape*> rectDrawings;
 	std::list <CircleShape*> circDrawings;
@@ -33,6 +38,7 @@ private:
 void Drawing::insert(RectangleShape &rect)
 {
 	this->rectDrawings.push_front(&rect);
+
 }
 
 void Drawing::insert(CircleShape &circ)
