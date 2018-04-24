@@ -15,11 +15,6 @@ public:
 
 	std::list <sf::RectangleShape*> *getRectDrawingBegin();
 
-	std::vector <RectangleShape*> getRectDrawings()
-	{
-		return this->rectDrawings;
-	}
-
 
 private:
 	std::list <sf::RectangleShape*> rectDrawings;
