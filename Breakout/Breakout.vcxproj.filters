@@ -42,10 +42,10 @@
     <ClCompile Include="stateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testingRealm.cpp">
+    <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="bricks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sfml.cpp">

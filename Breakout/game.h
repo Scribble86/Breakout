@@ -1,20 +1,9 @@
 #pragma once
-
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Graphics/Shape.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <memory>
-#include <string>
-#include "stateMachine.h"
-#include "AssetManager.h"
 #include "imputManager.h"
-//#include "bricks.h"
+#include "AssetManager.h"
+#include "stateMachine.h"
 #include "Drawing.h"
 
-namespace Breakout
-{
 	struct Gamed {
 		StateMachine machine;
 		sf::RenderWindow window;
@@ -70,5 +59,3 @@ namespace Breakout
 		void Run();
 
 	};
-
-}

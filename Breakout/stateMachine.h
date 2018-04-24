@@ -1,13 +1,8 @@
-#pragma once 
-
-#include <memory> 
-#include <stack> //states will be depending on the stack in the game 
+#include "Header.h"
 #include "state.h"
  
-
-namespace Breakout {
-
 	typedef std::unique_ptr<State> StateRef;
+
 	class StateMachine 
 	{
 	public:
@@ -30,5 +25,3 @@ namespace Breakout {
 		bool _replacing;
 		
 	};
-
-}

@@ -9,12 +9,13 @@
 #include <ios>
 #include <iostream>
 #include <cmath>
-#include <list>
 #include <iterator>
-#include "ball.h"
-//#include "bricks.h"
-//#include "Drawing.h"
-#include "game.h"
+#include <map>// To store textures and fonts
+#include <memory> 
+#include <stack> //states will be depending on the stack in the game
+#include <algorithm>
+#include <memory>
+#include <string>
 
 //bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
 //float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);

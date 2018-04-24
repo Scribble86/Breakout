@@ -1,13 +1,8 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <list>
-#include <iterator>
-#include <algorithm>
 #include "bricks.h"
-#include <iostream>
+#include <list>
 
-class Drawing : public sf::RectangleShape, public sf::CircleShape
+class Drawing : sf::RectangleShape, sf::CircleShape
 {
 public:
 	Drawing()
@@ -17,9 +12,9 @@ public:
 		this->rectList = this->rectDrawings.begin();
 	}
 
-	void insertR(RectangleShape &rect);
-	void insertC(CircleShape &circ);
-	void insertB(bricks &newbrick);
+	void insert(sf::RectangleShape &rect);
+	void insert(sf::CircleShape &circ);
+	void insert(bricks &newbrick);
 
 	void letsDraw(sf::RenderWindow &window);
 
@@ -35,20 +30,25 @@ public:
 
 
 private:
-	std::vector <RectangleShape*> rectDrawings;
-	std::vector <CircleShape*> circDrawings;
-	std::vector <RectangleShape*>::iterator rectList;
-	std::vector <CircleShape*>::iterator circList;
+	std::list <sf::RectangleShape*> rectDrawings;
+	std::list <sf::CircleShape*> circDrawings;
+	std::list <sf::RectangleShape>::iterator rectList;
+	std::list <sf::CircleShape > ::iterator circList;
 };
 
-void Drawing::insertR(RectangleShape &rect)
+inline Drawing::Drawing()
+{
+
+}
+
+void Drawing::insert(sf::RectangleShape &rect)
 {
 	this->rectList = this->rectDrawings.begin();
 
 	this->rectDrawings.insert(this->rectList, &rect);
 }
 
-void Drawing::insertC(CircleShape &circ)
+void Drawing::insert(sf::CircleShape &circ)
 {
 	this->circDrawings.insert(this->circList, &circ);
 }
@@ -74,4 +74,9 @@ void Drawing::letsDraw(sf::RenderWindow &window)
 
 	for (std::vector<CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
 		window.draw(**li);
+}
+
+inline std::list<sf::RectangleShape*>* Drawing::getRectDrawingBegin()
+{
+	return &this->rectDrawings;
 }
