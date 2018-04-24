@@ -86,7 +86,22 @@
     <ClInclude Include="bricks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Drawing.h">
+    <ClInclude Include="AssetManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imputManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
