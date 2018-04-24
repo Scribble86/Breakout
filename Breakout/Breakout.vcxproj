@@ -159,7 +159,6 @@
     <ClCompile Include="brick.cpp" />
     <ClCompile Include="displayBricks.cpp" />
     <ClCompile Include="game.cpp" />
-    <ClCompile Include="game.cpp" />
     <ClCompile Include="imputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sfml.cpp" />
