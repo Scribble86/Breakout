@@ -5,12 +5,7 @@
 class Drawing : sf::RectangleShape, sf::CircleShape
 {
 public:
-	Drawing()
-	{
-		this->rectDrawings;
-		this->circDrawings;
-		this->rectList = this->rectDrawings.begin();
-	}
+	Drawing();
 
 	void insert(sf::RectangleShape &rect);
 	void insert(sf::CircleShape &circ);
@@ -18,10 +13,7 @@ public:
 
 	void letsDraw(sf::RenderWindow &window);
 
-	std::vector <RectangleShape*> *getRectDrawingBegin()
-	{
-		return &this->rectDrawings;
-	}
+	std::list <sf::RectangleShape*> *getRectDrawingBegin();
 
 	std::vector <RectangleShape*> getRectDrawings()
 	{
@@ -69,10 +61,10 @@ void Drawing::insertB(bricks &newbrick)
 
 void Drawing::letsDraw(sf::RenderWindow &window)
 {
-	for (std::vector<RectangleShape*>::iterator li = this->rectDrawings.begin(); li != this->rectDrawings.end(); li++)
+	for (std::list<sf::RectangleShape*>::iterator li = this->rectDrawings.begin(); li != this->rectDrawings.end(); li++)
 		window.draw(**li);
 
-	for (std::vector<CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
+	for (std::list<sf::CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
 		window.draw(**li);
 }
 

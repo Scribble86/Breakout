@@ -225,6 +225,11 @@ sf::Vector2f Break_Out::bounceBall(sf::CircleShape ball, float angle, float spee
 	return ballMovement;
 }
 
+bool Break_Out::collisionDetect(bricks &bricks, sf::CircleShape &ball, Drawing &DrawList)
+{
+	std::list<sf::RectangleShape*>::iterator li = DrawList.getRectDrawingBegin()->begin();
+	for (int i = 0; i < 80; i++)
+		li++;
 	bool Break_Out::collisionDetect(bricks &bricks, sf::CircleShape &ball, Drawing &DrawList)
 	{
 		//DrawList.getRectDrawingBegin()->begin();
