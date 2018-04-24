@@ -15,51 +15,64 @@ public:
 	{
 		this->rectDrawings;
 		this->circDrawings;
+		this->rectList = this->rectDrawings.begin();
 	}
 
-	void insert(RectangleShape &rect);
-	void insert(CircleShape &circ);
-	void insert(bricks &newbrick);
+	void insertR(RectangleShape &rect);
+	void insertC(CircleShape &circ);
+	void insertB(bricks &newbrick);
 
 	void letsDraw(sf::RenderWindow &window);
 
-	std::list <RectangleShape*> *getRectDrawingBegin()
+	std::vector <RectangleShape*> *getRectDrawingBegin()
 	{
 		return &this->rectDrawings;
 	}
 
+	std::vector <RectangleShape*> getRectDrawings()
+	{
+		return this->rectDrawings;
+	}
+
+
 private:
-	std::list <RectangleShape*> rectDrawings;
-	std::list <CircleShape*> circDrawings;
-	std::list <RectangleShape>::iterator rectList;
-	std::list <CircleShape>::iterator circList;
+	std::vector <RectangleShape*> rectDrawings;
+	std::vector <CircleShape*> circDrawings;
+	std::vector <RectangleShape*>::iterator rectList;
+	std::vector <CircleShape*>::iterator circList;
 };
 
-void Drawing::insert(RectangleShape &rect)
+void Drawing::insertR(RectangleShape &rect)
 {
-	this->rectDrawings.push_front(&rect);
+	this->rectList = this->rectDrawings.begin();
 
+	this->rectDrawings.insert(this->rectList, &rect);
 }
 
-void Drawing::insert(CircleShape &circ)
+void Drawing::insertC(CircleShape &circ)
 {
-	this->circDrawings.push_front(&circ);
+	this->circDrawings.insert(this->circList, &circ);
 }
 
-void Drawing::insert(bricks &newbrick)
+void Drawing::insertB(bricks &newbrick)
 {
+	this->rectList = this->rectDrawings.begin();
+
 	for (int j = 0; j < 5; j++)
 	{
 		for (int i = 0; i < 20; i++)
-			this->rectDrawings.push_front(&newbrick.brickArr[j][i]);
+		{
+			this->rectList = this->rectDrawings.begin();
+			this->rectDrawings.insert(this->rectList, &newbrick.brickArr[j][i]);
+		}
 	}
 }
 
 void Drawing::letsDraw(sf::RenderWindow &window)
 {
-	for (std::list<RectangleShape*>::iterator li = this->rectDrawings.begin(); li != this->rectDrawings.end(); li++)
+	for (std::vector<RectangleShape*>::iterator li = this->rectDrawings.begin(); li != this->rectDrawings.end(); li++)
 		window.draw(**li);
 
-	for (std::list<CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
+	for (std::vector<CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
 		window.draw(**li);
 }
