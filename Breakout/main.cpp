@@ -26,7 +26,7 @@ int main()
 
 	sf::Vector2f ballMoving = sf::Vector2f(1.5, -1.5);
 	sf::Vector2f ballStopped = sf::Vector2f(0, 0);
-	sf::Vector2f ballMovement = ballMoving;
+//	sf::Vector2f ballMovement = ballMoving;
 	
 	float paddleWidth = windowSize.x / 10;
 	float paddleHeight = windowSize.y / 30;
