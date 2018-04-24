@@ -5,7 +5,6 @@
 #include <iterator>
 #include <algorithm>
 #include "bricks.h"
-
 #include <iostream>
 
 class Drawing : public sf::RectangleShape, public sf::CircleShape

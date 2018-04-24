@@ -10,7 +10,7 @@
 #include "stateMachine.h"
 #include "AssetManager.h"
 #include "imputManager.h"
-#include "bricks.h"
+//#include "bricks.h"
 #include "Drawing.h"
 
 namespace Breakout
@@ -22,31 +22,15 @@ namespace Breakout
 		imputManager input;
 	};
 
-	typedef std::shared_ptr<Gamed> GamedRef;
-
-	class Game
-	{
-	public:
-		Game(int width, int height, std::string tittle);
-
-	private:
-		const float delta = 1.0f / 60.0f;
-		sf::Clock Gclock;
-
-		GamedRef Gdata = std::make_shared<Gamed>();
-		void Run();
-
-	};
-
-	class breakout
+	class Break_Out
 	{
 	private:
-		
+
 		uint32_t style;
 		sf::RenderWindow *window;
 		sf::CircleShape ball;
 		sf::RectangleShape paddle;
-		bricks brickL;
+		bricks * brickL;
 		Drawing drawList;
 		sf::Vector2f ballStart;
 		sf::Vector2f ballMoving;
@@ -63,7 +47,28 @@ namespace Breakout
 		float paddlePositionX;
 		int delay;
 	public:
-		breakout();
+		Break_Out();
+		int run();
+		bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
+		float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);
+		sf::Vector2f bounceBall(sf::CircleShape ball, float angle, float speed);
+		bool collisionDetect(bricks &bricks, sf::CircleShape &ball, Drawing &DrawList);
+	};
+
+	typedef std::shared_ptr<Gamed> GamedRef;
+
+	class Game
+	{
+	public:
+		Game(int width, int height, std::string tittle);
+
+	private:
+		const float delta = 1.0f / 60.0f;
+		sf::Clock Gclock;
+
+		GamedRef Gdata = std::make_shared<Gamed>();
+		void Run();
+
 	};
 
 }
