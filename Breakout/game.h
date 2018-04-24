@@ -5,6 +5,8 @@
 #include "stateMachine.h"
 #include "AssetManager.h"
 #include "imputManager.h"
+#include "bricks.h"
+#include "Drawing.h"
 
 namespace Breakout
 {
