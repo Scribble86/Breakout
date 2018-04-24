@@ -29,5 +29,5 @@ public:
 		this->setPosition(pos);
 	}
 
-
+	
 };
