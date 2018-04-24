@@ -1,6 +1,5 @@
 #include "imputManager.h"
 
-namespace Breakout {
 	bool imputManager::spriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow &window)
 	{
 		if (sf::Mouse::isButtonPressed(button)) 
@@ -18,4 +17,3 @@ namespace Breakout {
 	{
 		return sf::Mouse::getPosition(window);
 	}
-}

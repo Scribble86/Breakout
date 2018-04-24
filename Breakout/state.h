@@ -1,7 +1,4 @@
-#pragma once 
-
 //to keep all our clases separated 
-namespace Breakout {
 	class State
 	{
 	public:
@@ -13,4 +10,3 @@ namespace Breakout {
 		void Pause() {}
 		void Resume() {}
 	};
-}

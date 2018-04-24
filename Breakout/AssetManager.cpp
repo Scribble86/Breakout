@@ -1,6 +1,5 @@
 #include "AssetManager.h"
 
-namespace Breakout {
 	//FOR TEXTURE
 	void AssetManager::LoadTexture(std::string name, std::string fileName)
 	{
@@ -26,5 +25,4 @@ namespace Breakout {
 	{
 		return this->_fonts.at(name);
 	}
-}
 
