@@ -7,19 +7,25 @@ int main()
 
 	game.run();
 
-	//uint32_t style = sf::Style::Close;
+	uint32_t style = sf::Style::Close;
 
-	//sf::RenderWindow window(sf::VideoMode(600, 400,8), "Breakout", style);
+	sf::RenderWindow window(sf::VideoMode(600, 400,8), "Breakout", style);
 
 	//Drawing drawList;
 
-	//sf::Vector2i mouseposition;
-	//sf::Vector2i windowPosition;
-
-	//sf::Vector2u windowSize = window.getSize();
-	//window.setMouseCursorVisible(false);
-	//window.setFramerateLimit(160);
-	////window.setMouseCursorGrabbed(true);
+	sf::Vector2f ballMoving = sf::Vector2f(1.5, -1.5);
+	sf::Vector2f ballStopped = sf::Vector2f(0, 0);
+	sf::Vector2f ballMovement = ballMoving;
+	
+	float paddleWidth = window.getSize().x / 10;
+	float paddleHeight = window.getSize().y / 30;
+	sf::Vector2f paddleSize(paddleWidth, paddleHeight);
+	float paddlePositionY = 9 * (window.getSize().y / 10);
+	float paddlePositionX = window.getSize().x / 2;
+	sf::Vector2f paddlePosition(paddlePositionX, paddlePositionY);
+	sf::RectangleShape paddle = sf::RectangleShape(paddleSize);
+	paddle.setPosition(paddlePosition);
+	paddle.setFillColor(sf::Color::White);
 
 	//sf::CircleShape ball = sf::CircleShape(7.0, 30);
 	//sf::Vector2f ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());

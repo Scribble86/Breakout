@@ -74,9 +74,10 @@ namespace Breakout {
 
 		delay = 0;
 
-		drawList.insert(ball);
-		drawList.insert(paddle);
-		drawList.insert(*brickL);
+		drawList.insertC(ball);
+		drawList.insertR(paddle);
+		drawList.insertB(*brickL);
+
 	}
 
 	int Break_Out::run()
@@ -217,16 +218,19 @@ namespace Breakout {
 
 	bool Break_Out::collisionDetect(bricks &bricks, sf::CircleShape &ball, Drawing &DrawList)
 	{
-		std::list<sf::RectangleShape*>::iterator li = DrawList.getRectDrawingBegin()->begin();
-		for (int i = 0; i < 80; i++)
-			li++;
+		//DrawList.getRectDrawingBegin()->begin();
+		//std::list<sf::RectangleShape*>::iterator li = &DrawList.getRectDrawings()->begin();
+		//for (int i = 0; i < 80; i++)
+		//	li++;
 
 		bool collide = false;
 		float ballLeftSide = ball.getPosition().x;
 		float ballTopSide = ball.getPosition().y;
 		float ballRightSide = ball.getPosition().x + (ball.getRadius() * 2);
 		float ballBottomSide = ball.getPosition().y + (ball.getRadius() * 2);
-		for (int j = 0; j < 5; j++)
+		
+		
+		/*for (int j = 0; j < 5; j++)
 		{
 			for (int i = 0; i < 20; i++)
 			{
@@ -244,7 +248,7 @@ namespace Breakout {
 			}
 			if (collide == true)
 				break;
-		}
+		}*/
 
 		return collide;
 	}
