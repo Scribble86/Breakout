@@ -1,8 +1,6 @@
-#pragma once
-#include <SFML\Graphics.hpp>
+#include "Header.h";
 
-namespace Breakout {
-	class imputManager
+class imputManager
 	{
 	public:
 		imputManager() {}
@@ -10,8 +8,5 @@ namespace Breakout {
 
 		bool spriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow &window);//events
 		sf::Vector2i GetMousePosition(sf::RenderWindow &window);
-	
 	};
-
-}
 

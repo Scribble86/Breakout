@@ -1,10 +1,6 @@
-#pragma once
-#include <SFML\Graphics.hpp>
-#include <map> // To store textures and fonts
+#include "Header.h"
 
-namespace Breakout {
-
-	class AssetManager
+class AssetManager
 	{
 	public:
 		AssetManager() {}
@@ -20,5 +16,4 @@ namespace Breakout {
 		std::map<std::string, sf::Texture> _textures;
 		std::map<std::string, sf::Font> _fonts;
 	};
-}
 

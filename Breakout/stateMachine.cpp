@@ -1,8 +1,6 @@
 #include "StateMachine.h"
 
-namespace Breakout {
-
-	void StateMachine::addState(StateRef newState, bool replacing)
+void StateMachine::addState(StateRef newState, bool replacing)
 	{
 		this->_adding = true;
 		this->_replacing = replacing;
@@ -46,6 +44,5 @@ namespace Breakout {
 		{
 			return this->_states.top( );
 		}
-}
 
 

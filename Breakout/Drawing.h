@@ -1,46 +1,39 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <list>
-#include <iterator>
-#include <algorithm>
 #include "bricks.h"
-#include <iostream>
+#include <list>
 
-class Drawing : public sf::RectangleShape, public sf::CircleShape
+class Drawing : sf::RectangleShape, sf::CircleShape
 {
 public:
-	Drawing()
-	{
-		this->rectDrawings;
-		this->circDrawings;
-	}
+	Drawing();
 
-	void insert(RectangleShape &rect);
-	void insert(CircleShape &circ);
+	void insert(sf::RectangleShape &rect);
+	void insert(sf::CircleShape &circ);
 	void insert(bricks &newbrick);
 
 	void letsDraw(sf::RenderWindow &window);
 
-	std::list <RectangleShape*> *getRectDrawingBegin()
-	{
-		return &this->rectDrawings;
-	}
+	std::list <sf::RectangleShape*> *getRectDrawingBegin();
 
 private:
-	std::list <RectangleShape*> rectDrawings;
-	std::list <CircleShape*> circDrawings;
-	std::list <RectangleShape>::iterator rectList;
-	std::list <CircleShape>::iterator circList;
+	std::list <sf::RectangleShape*> rectDrawings;
+	std::list <sf::CircleShape*> circDrawings;
+	std::list <sf::RectangleShape>::iterator rectList;
+	std::list <sf::CircleShape > ::iterator circList;
 };
 
-void Drawing::insert(RectangleShape &rect)
+inline Drawing::Drawing()
+{
+
+}
+
+void Drawing::insert(sf::RectangleShape &rect)
 {
 	this->rectDrawings.push_front(&rect);
 
 }
 
-void Drawing::insert(CircleShape &circ)
+void Drawing::insert(sf::CircleShape &circ)
 {
 	this->circDrawings.push_front(&circ);
 }
@@ -56,9 +49,14 @@ void Drawing::insert(bricks &newbrick)
 
 void Drawing::letsDraw(sf::RenderWindow &window)
 {
-	for (std::list<RectangleShape*>::iterator li = this->rectDrawings.begin(); li != this->rectDrawings.end(); li++)
+	for (std::list<sf::RectangleShape*>::iterator li = this->rectDrawings.begin(); li != this->rectDrawings.end(); li++)
 		window.draw(**li);
 
-	for (std::list<CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
+	for (std::list<sf::CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
 		window.draw(**li);
+}
+
+inline std::list<sf::RectangleShape*>* Drawing::getRectDrawingBegin()
+{
+	return &this->rectDrawings;
 }
