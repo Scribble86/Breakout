@@ -88,11 +88,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Mariana\Documents\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories>C:\Users\conno\Downloads\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Mariana\Documents\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalLibraryDirectories>C:\Users\conno\Downloads\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ws2_32.lib;ogg.lib;vorbis.lib;vorbisfile.lib;vorbisenc.lib;flac.lib;openal32.lib;jpeg.lib;freetype.lib;opengl32.lib;gdi32.lib;winmm.lib;sfml-graphics-s-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -155,16 +157,48 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="brick.cpp" />
     <ClCompile Include="displayBricks.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="imputManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="sfml.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="SplashState.cpp" />
+    <ClCompile Include="stateMachine.cpp" />
+    <ClCompile Include="testingRealm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="ball.h" />
+    <ClInclude Include="brick.h" />
     <ClInclude Include="bricks.h" />
     <ClInclude Include="container.h" />
     <ClInclude Include="Drawing.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="imputManager.h" />
+    <ClInclude Include="SplashState.h" />
+    <ClInclude Include="state.h" />
+    <ClInclude Include="stateMachine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="instructions.png" />
+    <Image Include="pixelball.png" />
+    <Image Include="play.jpg" />
+    <Image Include="play.png" />
+    <Image Include="pp.jpg" />
+    <Image Include="pp.png" />
+    <Image Include="pp1.png" />
+    <Image Include="pp2.png" />
+    <Image Include="ppins.png" />
+    <Image Include="rules.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pixelball" />
+    <None Include="pixelball2" />
+    <None Include="texture" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
