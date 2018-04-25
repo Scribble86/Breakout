@@ -108,11 +108,12 @@ int Break_Out::run()
 
 	bool mBall = false;
 	int lives = 3;
+	int score = 0;
 
 	brickL->setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y * .025)), window);
 	while (window.isOpen())
 	{
-		if (mBall)
+		if (mBall && lives > 0)
 		{
 			while (!window.hasFocus())
 			{
@@ -184,7 +185,10 @@ int Break_Out::run()
 
 					//ballMovement = bounceBall(ball, angle, speed);
 					delay = 0;
+					score += 5;
+					std::cout << std::endl;
 					std::cout << "brick detect" << std::endl;
+					std::cout << "Score: " << score << std::endl;
 					break;
 				}
 
@@ -250,7 +254,15 @@ int Break_Out::run()
 
 			window.display();
 		}
+		if (lives == 0)
+		{
+			lives--;
+			std::cout << std::endl;
+			std::cout << "GAME OVER" << std::endl;
+			std::cout << "Final Score: " << score << std::endl;
+		}
 	}
+
 
 	return 0;
 }
