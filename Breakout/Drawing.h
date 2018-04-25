@@ -14,6 +14,7 @@ public:
 	void insertShape(bricks &newbrick);
 	void letsDraw(sf::RenderWindow &window);
 	std::vector <sf::RectangleShape*> *getRectDrawingBegin();
+	std::vector <sf::CircleShape*> *getCircDrawingBegin();
 
 
 private:

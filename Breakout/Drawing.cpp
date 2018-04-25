@@ -48,3 +48,8 @@ std::vector<sf::RectangleShape*>* Drawing::getRectDrawingBegin()
 {
 	return &this->rectDrawings;
 }
+
+std::vector <sf::CircleShape*>* Drawing::getCircDrawingBegin()
+{
+	return &this->circDrawings;
+}
