@@ -84,9 +84,9 @@ Break_Out::Break_Out()
 
 	delay = 0;
 
-	drawList.insert(ball);
-	drawList.insert(paddle);
-	drawList.insert(*brickL);
+	drawList.insertC(ball);
+	drawList.insertR(paddle);
+	drawList.insertB(*brickL);
 }
 
 int Break_Out::run()
