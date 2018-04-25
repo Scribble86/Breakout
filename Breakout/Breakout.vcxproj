@@ -161,7 +161,6 @@
     <ClCompile Include="displayBricks.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="imputManager.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="stateMachine.cpp" />
   </ItemGroup>

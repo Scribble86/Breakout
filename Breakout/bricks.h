@@ -12,6 +12,5 @@ public:
 
 	//	void printBricks(sf::RectangleShape brickArr[], sf::RenderWindow &window);
 
-
 	RectangleShape brickArr[5][20];
 };

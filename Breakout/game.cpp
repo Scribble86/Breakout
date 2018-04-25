@@ -1,10 +1,10 @@
 //#include "bricks.h"
 #include "game.h"
-
+#include"Header.h"
 
 int main()
 {
-	Break_Out game = Break_Out();
+	Break_Out game;
 
 	game.run();
 
@@ -52,17 +52,16 @@ void Game::Run()
 Break_Out::Break_Out()
 {
 	style = sf::Style::Close;
-
-	// Window
-	window = new sf::RenderWindow(sf::VideoMode(600, 400, 8), "Breakout", style);
-	sf::Vector2u windowSize = window->getSize();
-	window->setMouseCursorVisible(false);
-	window->setFramerateLimit(160);
+	window.create(sf::VideoMode(600, 400, 8), "Breakout", style);
+	
+	sf::Vector2u windowSize = window.getSize();
+	window.setMouseCursorVisible(false);
+	window.setFramerateLimit(160);
 	//window.setMouseCursorGrabbed(true);
 
 	// Brick
-	brickL = new bricks(*(new sf::Vector2f(0, window->getSize().y)), sf::Color::Red, *(new sf::Vector2f(window->getSize().x*0.05, windowSize.x*.025)));
-	brickL->setBrickArr(*(new sf::Vector2f(0, window->getSize().y)), sf::Color::Red, *(new sf::Vector2f((window->getSize().x)*0.05, windowSize.x*.025)), *window);
+	brickL = new bricks(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f(window.getSize().x*0.05, windowSize.x*.025)));
+	brickL->setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, windowSize.x*.025)), window);
 
 	ball = sf::CircleShape(7.0, 30);
 	ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
@@ -85,21 +84,21 @@ Break_Out::Break_Out()
 	delay = 0;
 
 	drawList.insertC(ball);
-	drawList.insertR(paddle);
+	paddleD.insertR(paddle);
 	drawList.insertB(*brickL);
 }
 
 int Break_Out::run()
 {
-	while (window->isOpen())
+	while (window.isOpen())
 	{
-		while (!window->hasFocus())
+		while (!window.hasFocus())
 		{
 			//std::cout << "Window does not have focus" << std::endl;
 		}
 		sf::Event event;
 		mouseposition = sf::Mouse::getPosition();
-		windowPosition = window->getPosition();
+		windowPosition = window.getPosition();
 		paddleWidth = windowSize.x / 10;
 		paddleHeight = windowSize.y / 30;
 		paddleSize.x = paddleWidth;
@@ -119,6 +118,7 @@ int Break_Out::run()
 		}
 		if (ball.getPosition().y >= 400)
 		{
+			std::cout << "ball position:" << ball.getPosition().y;
 			ball.setPosition(ballStart);
 			ballMovement = ballStopped;
 		}
@@ -134,53 +134,58 @@ int Break_Out::run()
 			float angle = getAngle(paddle, ball);
 			ballMovement = bounceBall(ball, angle, speed);
 			delay = 0;
-
-		}
-		if (collisionDetect(*brickL, ball, drawList))
+		}		
+		
+		int count = 0;
+		
+		for (std::vector<sf::RectangleShape*>::iterator li = drawList.getRectDrawingBegin()->begin();
+			li != drawList.getRectDrawingBegin()->end(); li++)
 		{
-			float angle = atan2f(-ballMovement.y, ballMovement.x);
-			ballMovement = bounceBall(ball, angle, speed);
-			delay = 0;
-			std::cout << "brick detect" << std::endl;
+			
+			if (collisionDetect(*drawList.getRectDrawingBegin()->at(count), ball))
+			{
+				//	drawList.getRectDrawingBegin()->erase(drawList.getRectDrawingBegin()->at(count));
+				//float angle = getAngle(*drawList.getRectDrawingBegin()->at(count), ball);
+				float angle;
+
+				if ((ball.getPosition().y - ball.getRadius()) < drawList.getRectDrawingBegin()->at(count)->getPosition().y &&
+					(ball.getPosition().y + ball.getRadius()) > (drawList.getRectDrawingBegin()->at(count)->getPosition().y) + drawList.getRectDrawingBegin()->at(count)->getSize().y)
+				{
+					ballMovement.x = -ballMovement.x;
+				}
+				else
+					ballMovement.y = -ballMovement.y;
+
+				drawList.getRectDrawingBegin()->erase(li);
+
+				//ballMovement = bounceBall(ball, angle, speed);
+				delay = 0;
+				std::cout << "brick detect" << std::endl;
+				break;
+			}
+
+			if (li != drawList.getRectDrawingBegin()->end())
+				count++;
 		}
-		//if (delay > 10 && collisionDetect(leftBound, ball))
-		//{
-		//	float angle = getAngle(leftBound, ball);
-		//	ballMovement.y = (speed * std::sin(angle));
-		//	ballMovement.x = speed * std::cos(angle);
-		//	delay = 0;
-		//}
-		//if (delay > 10 && collisionDetect(topBound, ball))
-		//{
-		//	float angle = getAngle(topBound, ball);
-		//	ballMovement.y = (speed * std::sin(angle));
-		//	ballMovement.x = speed * std::cos(angle);
-		//	delay = 0;
-		//}
-		//if (delay > 10 && collisionDetect(rightBound, ball))
-		//{
-		//	float angle = getAngle(rightBound, ball);
-		//	ballMovement.y = (speed * std::sin(angle));
-		//	ballMovement.x = speed * std::cos(angle);
-		//	delay = 0;
-		//}
 
 		ball.move(ballMovement);
-		while (window->pollEvent(event))
+		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				window->close();
+				window.close();
 		}
+		
 		delay++;
-		window->clear();
+		window.clear();
 
-		drawList.letsDraw(*window);
-		window->display();
+		drawList.letsDraw(window);
+		paddleD.letsDraw(window);
+		
+		window.display();
 	}
 
 	return 0;
 }
-
 
 float Break_Out::getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball)
 {
@@ -209,7 +214,8 @@ bool Break_Out::collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &bal
 	float paddleRightSide = paddle.getPosition().x + paddle.getSize().x;
 	float paddleTopSide = paddle.getPosition().y;
 	float paddleBottomSide = paddle.getPosition().y + paddle.getSize().y;
-	if (ballBottomSide >= paddleTopSide && ballTopSide < paddleBottomSide && ballRightSide >= paddleLeftSide && ballLeftSide <= paddleRightSide)
+
+	if (ballBottomSide >= paddleTopSide && ballTopSide <= paddleBottomSide && ballRightSide >= paddleLeftSide && ballLeftSide <= paddleRightSide)
 	{
 		collide = true;
 	}
@@ -217,44 +223,11 @@ bool Break_Out::collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &bal
 	return collide;
 }
 
+
 sf::Vector2f Break_Out::bounceBall(sf::CircleShape ball, float angle, float speed)
 {
 	sf::Vector2f ballMovement = sf::Vector2f(0, 0);
 	ballMovement.y = (speed * std::sin(angle));
 	ballMovement.x = speed * std::cos(angle);
 	return ballMovement;
-}
-
-bool Break_Out::collisionDetect(bricks &bricks, sf::CircleShape &ball, Drawing &DrawList)
-{
-	std::list<sf::RectangleShape*>::iterator li = DrawList.getRectDrawingBegin()->begin();
-	for (int i = 0; i < 80; i++)
-		li++;
-
-	bool collide = false;
-	float ballLeftSide = ball.getPosition().x;
-	float ballTopSide = ball.getPosition().y;
-	float ballRightSide = ball.getPosition().x + (ball.getRadius() * 2);
-	float ballBottomSide = ball.getPosition().y + (ball.getRadius() * 2);
-	for (int j = 0; j < 5; j++)
-	{
-		for (int i = 0; i < 20; i++)
-		{
-
-			if (ball.getPosition().y <= bricks.brickArr[j][i].getPosition().y + 10)
-				collide = true;
-			if (collide == true)
-			{
-
-				int remove = j + i;
-				DrawList.getRectDrawingBegin()->erase(li);
-				break;
-			}
-			li--;
-		}
-		if (collide == true)
-			break;
-	}
-
-	return collide;
 }
