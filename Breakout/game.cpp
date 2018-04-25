@@ -241,8 +241,8 @@ int Break_Out::run()
 				{
 					mBall = true;
 
-					ballMovement.x = 1.5;
-					ballMovement.y = -1.5;
+					ballMovement.x = .5;
+					ballMovement.y = -1.75;
 					ball.move(ballMovement);
 				}
 			}
@@ -254,11 +254,15 @@ int Break_Out::run()
 
 			window.display();
 		}
-		if (lives == 0)
+		if (lives == 0 || drawList.getRectDrawings().size() == 0)
 		{
 			lives--;
 			std::cout << std::endl;
-			std::cout << "GAME OVER" << std::endl;
+			if (lives == -1)
+				std::cout << "GAME OVER" << std::endl;
+			else
+				std::cout << "You Completed the round" << std::endl;
+
 			std::cout << "Final Score: " << score << std::endl;
 		}
 	}
