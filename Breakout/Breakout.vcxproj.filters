@@ -148,4 +148,9 @@
     <None Include="pixelball2" />
     <None Include="texture" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="arial.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
 </Project>

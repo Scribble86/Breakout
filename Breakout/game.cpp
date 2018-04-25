@@ -92,6 +92,25 @@ int Break_Out::run()
 	window.display();
 	sf::Vector2u windowSize = window.getSize();
 	
+	int score = 0;
+
+	//Score text
+	sf::Text displayScore;
+
+	sf::Font scoreFont;
+	if (!scoreFont.loadFromFile("arial.ttf"))
+	{
+		std::cout << "ERROR FINDING FILE" << std::endl;
+	}
+
+	displayScore.setFont(scoreFont);
+	displayScore.setString("Score " + std::to_string(score));
+	displayScore.setCharacterSize(18);
+	displayScore.setColor(sf::Color::Blue);
+	displayScore.setOutlineColor(sf::Color::White);
+	//displayScore.setOutlineThickness(1);
+	displayScore.setStyle(sf::Text::Bold);
+
 	ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
 	ball.setPosition(ballStart);
 	paddleWidth = windowSize.x / 10;
@@ -108,7 +127,7 @@ int Break_Out::run()
 
 	bool mBall = false;
 	int lives = 3;
-	int score = 0;
+	
 
 	brickL->setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y * .025)), window);
 	while (window.isOpen())
@@ -189,6 +208,7 @@ int Break_Out::run()
 					std::cout << std::endl;
 					std::cout << "brick detect" << std::endl;
 					std::cout << "Score: " << score << std::endl;
+					displayScore.setString("Score " + std::to_string(score));
 					break;
 				}
 
@@ -208,6 +228,7 @@ int Break_Out::run()
 
 			drawList.letsDraw(window);
 			paddleD.letsDraw(window);
+			window.draw(displayScore);
 
 			window.display();
 		}
@@ -251,6 +272,7 @@ int Break_Out::run()
 
 			drawList.letsDraw(window);
 			paddleD.letsDraw(window);
+			window.draw(displayScore);
 
 			window.display();
 		}
