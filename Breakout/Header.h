@@ -1,4 +1,3 @@
-#pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -9,6 +8,8 @@
 #include <ios>
 #include <iostream>
 #include <cmath>
+#include <list>
+#include "ball.h"
 #include <iterator>
 #include <map>// To store textures and fonts
 #include <memory> 

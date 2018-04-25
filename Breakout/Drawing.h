@@ -1,4 +1,3 @@
-#pragma once
 #include "bricks.h"
 #include <list>
 #include <SFML\Graphics.hpp>
@@ -16,7 +15,7 @@ public:
 
 	void letsDraw(sf::RenderWindow &window);
 
-	std::list <sf::RectangleShape*> *getRectDrawingBegin();
+	std::vector <sf::RectangleShape*> *getRectDrawingBegin();
 
 	std::vector <RectangleShape*> getRectDrawings()
 	{
@@ -25,10 +24,10 @@ public:
 
 
 private:
-	std::list <sf::RectangleShape*> rectDrawings;
-	std::list <sf::CircleShape*> circDrawings;
-	std::list <sf::RectangleShape*>::iterator rectList;
-	std::list <sf::CircleShape*> ::iterator circList;
+	std::vector <sf::RectangleShape*> rectDrawings;
+	std::vector <sf::CircleShape*> circDrawings;
+	std::vector <sf::RectangleShape*>::iterator rectList;
+	std::vector <sf::CircleShape*> ::iterator circList;
 };
 
 inline Drawing::Drawing()
@@ -65,16 +64,16 @@ void Drawing::insertB(bricks &newbrick)
 	}
 }
 
-void Drawing::letsDraw(sf::RenderWindow &window)
+inline void Drawing::letsDraw(sf::RenderWindow &window)
 {
-	for (std::list<sf::RectangleShape*>::iterator li = this->rectDrawings.begin(); li != this->rectDrawings.end(); li++)
+	for (std::vector<sf::RectangleShape*>::iterator li = this->rectDrawings.begin(); li != this->rectDrawings.end(); li++)
 		window.draw(**li);
 
-	for (std::list<sf::CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
+	for (std::vector<sf::CircleShape*>::iterator li = this->circDrawings.begin(); li != this->circDrawings.end(); li++)
 		window.draw(**li);
 }
 
-inline std::list<sf::RectangleShape*>* Drawing::getRectDrawingBegin()
+inline std::vector<sf::RectangleShape*>* Drawing::getRectDrawingBegin()
 {
 	return &this->rectDrawings;
 }
