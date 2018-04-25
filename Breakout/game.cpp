@@ -54,7 +54,7 @@ Break_Out::Break_Out()
 	// Brick
 	brickL = new bricks(sf::Vector2f(0, 400), sf::Color::Red, *(new sf::Vector2f(30, 10)));
 
-	ball = sf::CircleShape(7.0, 30);
+	ball = sf::CircleShape(5, 30);
 	ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
 	ball.setPosition(ballStart);
 	ball.setFillColor(sf::Color::White);
@@ -79,6 +79,7 @@ Break_Out::Break_Out()
 
 	drawList.insertShape(ball);
 	paddleD.insertShape(paddle);
+	//paddleD.insertShape(topBorder);
 	drawList.insertShape(*brickL);
 }
 
@@ -93,6 +94,11 @@ int Break_Out::run()
 	sf::Vector2u windowSize = window.getSize();
 	
 	int score = 0;
+
+	// Top Border
+	sf::RectangleShape topBorder;
+	topBorder.setPosition(sf::Vector2f(0, 30));
+	topBorder.setSize(sf::Vector2f(windowSize.x, 1));
 
 	//Score text
 	sf::Text displayScore;
@@ -230,8 +236,8 @@ int Break_Out::run()
 					//float angle = getAngle(*drawList.getRectDrawingBegin()->at(count), ball);
 					float angle;
 
-					if ((ball.getPosition().y - ball.getRadius()) < drawList.getRectDrawingBegin()->at(count)->getPosition().y &&
-						(ball.getPosition().y + ball.getRadius()) > (drawList.getRectDrawingBegin()->at(count)->getPosition().y) + drawList.getRectDrawingBegin()->at(count)->getSize().y)
+					if ((ball.getPosition().y + ball.getRadius()) > drawList.getRectDrawingBegin()->at(count)->getPosition().y &&
+						(ball.getPosition().y + ball.getRadius()) < (drawList.getRectDrawingBegin()->at(count)->getPosition().y) + drawList.getRectDrawingBegin()->at(count)->getSize().y)
 					{
 						ballMovement.x = -ballMovement.x;
 					}
@@ -269,6 +275,7 @@ int Break_Out::run()
 			window.draw(displayScore);
 			window.draw(displayLife);
 			window.draw(displayPoints);
+			window.draw(topBorder);
 
 			if (lives == 3)
 			{
@@ -345,6 +352,7 @@ int Break_Out::run()
 			window.draw(displayScore);
 			window.draw(displayLife);
 			window.draw(displayPoints);
+			window.draw(topBorder);
 			
 			if (lives == 3)
 			{
