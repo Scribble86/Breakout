@@ -36,7 +36,7 @@
 	private:
 
 		uint32_t style;
-		sf::RenderWindow window;
+		//sf::RenderWindow window;
 		sf::CircleShape ball;
 		sf::RectangleShape paddle;
 		bricks * brickL;
