@@ -28,7 +28,6 @@
 
 		GamedRef Gdata = std::make_shared<Gamed>();
 		void Run();
-
 	};
 
 	class Break_Out
