@@ -16,6 +16,11 @@ public:
 	std::vector <sf::RectangleShape*> *getRectDrawingBegin();
 	std::vector <sf::CircleShape*> *getCircDrawingBegin();
 
+	std::vector <RectangleShape*> getRectDrawings()
+	{
+		return this->rectDrawings;
+	}
+
 
 private:
 	std::vector <sf::RectangleShape*> rectDrawings;
