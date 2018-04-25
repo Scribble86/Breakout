@@ -24,16 +24,19 @@
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stateMachine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="bricks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Drawing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="breakoutmenu.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,9 +48,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ball.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
@@ -92,6 +92,9 @@
     <ClInclude Include="Drawing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="instructions.png">
@@ -112,9 +115,6 @@
     <Image Include="pp.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="pp1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="pp2.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -123,6 +123,9 @@
     </Image>
     <Image Include="rules.png">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pp1.png">
+      <Filter>Source Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

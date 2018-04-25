@@ -89,13 +89,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Users\Mariana\Documents\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\SFML-2.4.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories>C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\Breakout\SFML-2.4.2\include;C:\Users\conno\Downloads\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mariana\Source\Repos\Breakout\SFML-2.4.2\include;C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\Breakout\SFML-2.4.2\include;C:\Users\conno\Downloads\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\include;C:</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\Mariana\Documents\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalLibraryDirectories>C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\Breakout\SFML-2.4.2\lib;C:\Users\conno\Downloads\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Mariana\Source\Repos\Breakout\SFML-2.4.2\lib;C:\Users\nchry\OneDrive\Education\Spring Semester 2018\CptS 122\Breakout\SFML-2.4.2\lib;C:\Users\conno\Downloads\SFML-2.4.2-windows-vc14-32-bit\SFML-2.4.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ws2_32.lib;ogg.lib;vorbis.lib;vorbisfile.lib;vorbisenc.lib;flac.lib;openal32.lib;jpeg.lib;freetype.lib;opengl32.lib;gdi32.lib;winmm.lib;sfml-graphics-s-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -157,10 +157,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="breakoutmenu.cpp" />
     <ClCompile Include="brick.cpp" />
     <ClCompile Include="bricks.cpp" />
     <ClCompile Include="displayBricks.cpp" />
     <ClCompile Include="Drawing.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ball.h" />
@@ -171,6 +174,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="imputManager.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="SplashState.h" />
     <ClInclude Include="state.h" />
     <ClInclude Include="stateMachine.h" />

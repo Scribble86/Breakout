@@ -1,35 +1,5 @@
 #pragma once
-#include "imputManager.h"
-#include "AssetManager.h"
-#include "stateMachine.h"
 #include "Drawing.h"
-
-	struct Gamed {
-		StateMachine machine;
-		sf::RenderWindow window;
-		AssetManager assets;
-		imputManager input;
-	};
-
-	struct render {
-		sf::RenderWindow &window;
-	};
-
-	typedef std::shared_ptr<Gamed> GamedRef;
-
-	class Game
-	{
-	public:
-		Game(int width, int height, std::string tittle);
-
-	private:
-		const float delta = 1.0f / 60.0f;
-		sf::Clock Gclock;
-
-		GamedRef Gdata = std::make_shared<Gamed>();
-		void Run();
-	};
-
 	class Break_Out
 	{
 	private:
