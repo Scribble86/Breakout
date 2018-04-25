@@ -309,18 +309,34 @@ int Break_Out::run()
 				if (event.type == sf::Event::Closed)
 					window.close();
 			}
+
+
 			
 			if(event.type == sf::Event::MouseButtonPressed)
 			{
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
 					mBall = true;
+					
+					if (lives < 0)
+					{
+						lives = 3;
+						score = 0;
+						displayPoints.setString(std::to_string(score));
+						brickL->setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y * .025)), window);
+						for (std::vector <sf::RectangleShape*>::iterator li = drawList.getRectDrawingBegin()->begin(); drawList.getRectDrawingBegin()->size() != 0;)
+							drawList.getRectDrawingBegin()->erase(li);
+				
+						drawList.insertShape(*brickL);
+					}
+						
 
 					ballMovement.x = .5;
 					ballMovement.y = -1.75;
 					ball.move(ballMovement);
 				}
 			}
+			
 
 			window.clear();
 
@@ -346,19 +362,6 @@ int Break_Out::run()
 			else
 			{
 				window.draw(gameOver);
-
-				if (event.type == sf::Event::MouseButtonPressed)
-				{
-					if (event.mouseButton.button == sf::Mouse::Left)
-					{
-						mBall = true;
-						score = 3;
-
-						ballMovement.x = .5;
-						ballMovement.y = -1.75;
-						ball.move(ballMovement);
-					}
-				}
 			}
 				
 
@@ -371,6 +374,7 @@ int Break_Out::run()
 			if (lives == -1)
 			{
 				std::cout << "GAME OVER" << std::endl;
+
 			}
 				
 			else
