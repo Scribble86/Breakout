@@ -51,17 +51,8 @@ void Game::Run()
 
 Break_Out::Break_Out()
 {
-	style = sf::Style::Close;
-	window.create(sf::VideoMode(600, 400, 8), "Breakout", style);
-	
-	sf::Vector2u windowSize = window.getSize();
-	window.setMouseCursorVisible(false);
-	window.setFramerateLimit(160);
-	//window.setMouseCursorGrabbed(true);
-
 	// Brick
-	brickL = new bricks(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f(window.getSize().x*0.05, windowSize.x*.025)));
-	brickL->setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, windowSize.x*.025)), window);
+	brickL = new bricks(sf::Vector2f(0, 400), sf::Color::Red, *(new sf::Vector2f(30, 10)));
 
 	ball = sf::CircleShape(7.0, 30);
 	ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
@@ -83,13 +74,33 @@ Break_Out::Break_Out()
 
 	delay = 0;
 
-	drawList.insertC(ball);
-	paddleD.insertR(paddle);
-	drawList.insertB(*brickL);
+	drawList.insertShape(ball);
+	paddleD.insertShape(paddle);
+	drawList.insertShape(*brickL);
 }
 
 int Break_Out::run()
 {
+
+	style = sf::Style::Close;
+	sf::RenderWindow window(sf::VideoMode(600, 400, 8), "Breakout", style);
+	window.setMouseCursorVisible(false);
+	window.setFramerateLimit(160);
+	window.display();
+	sf::Vector2u windowSize = window.getSize();
+	
+	ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
+	ball.setPosition(ballStart);
+	paddleWidth = windowSize.x / 10;
+	paddleHeight = windowSize.y / 30;
+	paddleSize = sf::Vector2f(paddleWidth, paddleHeight);
+	paddlePositionY = 9 * (windowSize.y / 10);
+	paddlePositionX = windowSize.x / 2;
+	paddlePosition = sf::Vector2f(paddlePositionX, paddlePositionY);
+	paddle = sf::RectangleShape(paddleSize);
+	paddle.setPosition(paddlePosition);
+
+	brickL->setBrickArr(*(new sf::Vector2f(0, 400)), sf::Color::Red, *(new sf::Vector2f((600)*0.05, 600 * .025)), window);
 	while (window.isOpen())
 	{
 		while (!window.hasFocus())
