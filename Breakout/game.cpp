@@ -104,12 +104,38 @@ int Break_Out::run()
 	}
 
 	displayScore.setFont(scoreFont);
-	displayScore.setString("Score " + std::to_string(score));
+	displayScore.setString("Score ");
 	displayScore.setCharacterSize(18);
 	displayScore.setColor(sf::Color::Blue);
-	displayScore.setOutlineColor(sf::Color::White);
+	//displayScore.setOutlineColor(sf::Color::White);
 	//displayScore.setOutlineThickness(1);
 	displayScore.setStyle(sf::Text::Bold);
+
+	sf::Text displayPoints;
+	displayPoints.setFont(scoreFont);
+	displayPoints.setString(std::to_string(score));
+	displayPoints.setCharacterSize(18);
+	displayPoints.setColor(sf::Color::White);
+	displayPoints.setStyle(sf::Text::Bold);
+	displayPoints.setPosition(sf::Vector2f(55, 0));
+
+	sf::Text gameOver;
+	gameOver.setFont(scoreFont);
+	gameOver.setString("GAME OVER");
+	gameOver.setCharacterSize(30);
+	gameOver.setColor(sf::Color::Red);
+	gameOver.setOutlineColor(sf::Color::White);
+	gameOver.setOutlineThickness(2);
+	gameOver.setStyle(sf::Text::Bold);
+	gameOver.setPosition(sf::Vector2f(window.getSize().x / 2 - 100, window.getSize().y / 2 - 15));
+
+	sf::Text displayLife;
+	displayLife.setFont(scoreFont);
+	displayLife.setString("Lives");
+	displayLife.setCharacterSize(18);
+	displayLife.setColor(sf::Color::Blue);
+	displayLife.setPosition(sf::Vector2f(window.getSize().x / 2, 0));
+	displayLife.setStyle(sf::Text::Bold);
 
 	ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
 	ball.setPosition(ballStart);
@@ -128,6 +154,18 @@ int Break_Out::run()
 	bool mBall = false;
 	int lives = 3;
 	
+	sf::CircleShape ballLife, ballLife2, ballLife3;
+	ballLife.setRadius(4.5);
+	ballLife.setPointCount(30);
+	ballLife.setPosition(sf::Vector2f(window.getSize().x / 2+55, 8));
+
+	ballLife2.setRadius(4.5);
+	ballLife2.setPointCount(30);
+	ballLife2.setPosition(sf::Vector2f(window.getSize().x / 2 + 66, 8));
+
+	ballLife3.setRadius(4.5);
+	ballLife3.setPointCount(30);
+	ballLife3.setPosition(sf::Vector2f(window.getSize().x / 2 + 77, 8));
 
 	brickL->setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y * .025)), window);
 	while (window.isOpen())
@@ -208,7 +246,7 @@ int Break_Out::run()
 					std::cout << std::endl;
 					std::cout << "brick detect" << std::endl;
 					std::cout << "Score: " << score << std::endl;
-					displayScore.setString("Score " + std::to_string(score));
+					displayPoints.setString(std::to_string(score));
 					break;
 				}
 
@@ -229,6 +267,22 @@ int Break_Out::run()
 			drawList.letsDraw(window);
 			paddleD.letsDraw(window);
 			window.draw(displayScore);
+			window.draw(displayLife);
+			window.draw(displayPoints);
+
+			if (lives == 3)
+			{
+				window.draw(ballLife);
+				window.draw(ballLife2);
+				window.draw(ballLife3);
+			}
+			else if (lives == 2)
+			{
+				window.draw(ballLife);
+				window.draw(ballLife2);
+			}
+			else if (lives == 1)
+				window.draw(ballLife);
 
 			window.display();
 		}
@@ -273,6 +327,40 @@ int Break_Out::run()
 			drawList.letsDraw(window);
 			paddleD.letsDraw(window);
 			window.draw(displayScore);
+			window.draw(displayLife);
+			window.draw(displayPoints);
+			
+			if (lives == 3)
+			{
+				window.draw(ballLife);
+				window.draw(ballLife2);
+				window.draw(ballLife3);
+			}
+			else if (lives == 2)
+			{
+				window.draw(ballLife);
+				window.draw(ballLife2);
+			}
+			else if (lives == 1)
+				window.draw(ballLife);
+			else
+			{
+				window.draw(gameOver);
+
+				if (event.type == sf::Event::MouseButtonPressed)
+				{
+					if (event.mouseButton.button == sf::Mouse::Left)
+					{
+						mBall = true;
+						score = 3;
+
+						ballMovement.x = .5;
+						ballMovement.y = -1.75;
+						ball.move(ballMovement);
+					}
+				}
+			}
+				
 
 			window.display();
 		}
@@ -281,7 +369,10 @@ int Break_Out::run()
 			lives--;
 			std::cout << std::endl;
 			if (lives == -1)
+			{
 				std::cout << "GAME OVER" << std::endl;
+			}
+				
 			else
 				std::cout << "You Completed the round" << std::endl;
 
