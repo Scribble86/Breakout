@@ -48,7 +48,7 @@
     <ClCompile Include="bricks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sfml.cpp">
+    <ClCompile Include="Drawing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
