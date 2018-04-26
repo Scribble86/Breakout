@@ -31,6 +31,7 @@
 #include <algorithm>
 #include <memory>
 #include <string>
+#include <random>
 
 //bool collisionDetect(sf::RectangleShape &paddle, sf::CircleShape &ball);
 //float getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball);
