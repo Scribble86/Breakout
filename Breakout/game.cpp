@@ -1,6 +1,9 @@
 //#include "bricks.h"
 #include "game.h"
 #include"Header.h"
+#include <iostream>
+#include <fstream>
+#include <string> 
 
 //int mains()
 //{
@@ -102,7 +105,7 @@ int Break_Out::run()
 	youWin.setOutlineColor(sf::Color::White);
 	youWin.setOutlineThickness(2);
 	youWin.setStyle(sf::Text::Bold);
-	youWin.setPosition(sf::Vector2f(window.getSize().x / 2 - 100, window.getSize().y / 2 - 15));
+	youWin.setPosition(sf::Vector2f(window.getSize().x / 2 - 150, window.getSize().y / 2 - 15));
 
 	sf::Text displayLife;
 	displayLife.setFont(scoreFont);
@@ -111,6 +114,25 @@ int Break_Out::run()
 	displayLife.setColor(sf::Color::Blue);
 	displayLife.setPosition(sf::Vector2f(window.getSize().x / 2, 0));
 	displayLife.setStyle(sf::Text::Bold);
+
+	std::string highest;
+
+	sf::Text highScore;
+	highScore.setFont(scoreFont);
+	highScore.setString("Best: " + highest);
+	highScore.setCharacterSize(18);
+	highScore.setColor(sf::Color::Blue);
+	highScore.setPosition(sf::Vector2f(window.getSize().x / 2, 0));
+	highScore.setStyle(sf::Text::Bold);
+	highScore.setPosition(sf::Vector2f(window.getSize().x / 2 - 45, window.getSize().y / 2 + 20));
+
+	sf::Text displayHighest;
+	displayHighest.setFont(scoreFont);
+	displayHighest.setString(std::to_string(score));
+	displayHighest.setCharacterSize(18);
+	displayHighest.setColor(sf::Color::White);
+	displayHighest.setStyle(sf::Text::Bold);
+	displayHighest.setPosition(sf::Vector2f(window.getSize().x / 2 +5, window.getSize().y / 2 + 20));
 
 	ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
 	ball.setPosition(ballStart);
@@ -317,7 +339,6 @@ int Break_Out::run()
 					ball.move(ballMovement);
 				}
 			}
-			
 
 			window.clear();
 
@@ -343,7 +364,34 @@ int Break_Out::run()
 				window.draw(ballLife);
 			else
 			{
+				std::string tempScore;
+				int compare = 0;
 				window.draw(gameOver);
+
+				std::ifstream testing;
+				testing.open("highscores.txt");
+				std::getline(testing, tempScore);
+				testing.close();
+				
+				compare = std::stoi(tempScore, nullptr, 10);
+
+				if (compare < score)
+				{
+
+					std::ofstream getHighScore;
+					getHighScore.open("highscores.txt");
+					getHighScore << score;
+					displayHighest.setString(std::to_string(score));
+					getHighScore.close();
+				}
+				else if (compare > score)
+				{
+					displayHighest.setString(std::to_string(compare));
+				}
+
+				window.draw(highScore);
+				window.draw(displayHighest);
+
 			}
 			if (drawList.getRectDrawings().size() == 0)
 				window.draw(youWin);
