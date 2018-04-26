@@ -322,7 +322,7 @@ int Break_Out::run()
 				{
 					mBall = true;
 					
-					if (lives <= 0)
+					if (lives <= 0 || drawList.getRectDrawings().size() == 0)
 					{
 						lives = 3;
 						score = 0;
@@ -394,8 +394,37 @@ int Break_Out::run()
 
 			}
 			if (drawList.getRectDrawings().size() == 0)
+			{
 				window.draw(youWin);
 
+				std::string tempScore;
+				int compare = 0;
+
+				std::ifstream testing;
+				testing.open("highscores.txt");
+				std::getline(testing, tempScore);
+				testing.close();
+
+				compare = std::stoi(tempScore, nullptr, 10);
+
+				if (compare < score)
+				{
+
+					std::ofstream getHighScore;
+					getHighScore.open("highscores.txt");
+					getHighScore << score;
+					displayHighest.setString(std::to_string(score));
+					getHighScore.close();
+				}
+				else if (compare > score)
+				{
+					displayHighest.setString(std::to_string(compare));
+				}
+
+				window.draw(highScore);
+				window.draw(displayHighest);
+			}
+				
 			window.display();
 		}
 	}
