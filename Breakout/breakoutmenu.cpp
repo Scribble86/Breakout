@@ -23,7 +23,7 @@ int main()
 	sf::Texture background;
 	if (!background.loadFromFile("pp2.png"))
 	{
-	std::cout << "ERROR" << std::endl;
+	//std::cout << "ERROR" << std::endl;
 	}
 	sf::Sprite sprite(background);
 
@@ -53,14 +53,14 @@ int main()
 					switch (menu.GetItem())
 					{
 					case 0:
-						std::cout << "Play botton has been pressed" << std::endl;
+						//std::cout << "Play botton has been pressed" << std::endl;
 						br.run();
 						break;
 					case 1:
 						window.clear();
 						if (!background.loadFromFile("ins.png"))
 						{
-							std::cout << "ERROR" << std::endl;
+							//std::cout << "ERROR" << std::endl;
 						}
 
 						break;

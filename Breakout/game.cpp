@@ -1,21 +1,14 @@
 //#include "bricks.h"
 #include "game.h"
 #include"Header.h"
-
-//int mains()
-//{
-//	Break_Out game;
-//
-//	game.run();
-//
-//	return 0;
-//}
+#include <time.h>
 
 Break_Out::Break_Out()
 {
 	// Brick
 	brickL = new bricks(sf::Vector2f(0, 400), sf::Color::Red, *(new sf::Vector2f(30, 10)));
-
+	time_t time = std::time(0);
+	srand(time);
 	ball = sf::CircleShape(5, 30);
 	ballStart = sf::Vector2f((windowSize.x / 2) - ball.getRadius(), (windowSize.y / 2) - ball.getRadius());
 	ball.setPosition(ballStart);
@@ -37,8 +30,6 @@ Break_Out::Break_Out()
 	ballStart.x = (paddle.getPosition().x + paddle.getSize().x);
 	ballStart.y = ball.getRadius() + paddle.getPosition().y;
 
-	delay = 0;
-
 	drawList.insertShape(ball);
 	paddleD.insertShape(paddle);
 	//paddleD.insertShape(topBorder);
@@ -51,10 +42,10 @@ int Break_Out::run()
 	style = sf::Style::Close;
 	sf::RenderWindow window(sf::VideoMode(600, 400, 8), "Breakout", style);
 	window.setMouseCursorVisible(false);
-	window.setFramerateLimit(160);
+	window.setFramerateLimit(80);
 	window.display();
 	sf::Vector2u windowSize = window.getSize();
-	
+
 	int score = 0;
 
 	// Top Border
@@ -68,7 +59,7 @@ int Break_Out::run()
 	sf::Font scoreFont;
 	if (!scoreFont.loadFromFile("arial.ttf"))
 	{
-		std::cout << "ERROR FINDING FILE" << std::endl;
+		//std::cout << "ERROR FINDING FILE" << std::endl;
 	}
 
 	displayScore.setFont(scoreFont);
@@ -121,11 +112,11 @@ int Break_Out::run()
 
 	bool mBall = false;
 	int lives = 3;
-	
+
 	sf::CircleShape ballLife, ballLife2, ballLife3;
 	ballLife.setRadius(4.5);
 	ballLife.setPointCount(30);
-	ballLife.setPosition(sf::Vector2f(window.getSize().x / 2+55, 8));
+	ballLife.setPosition(sf::Vector2f(window.getSize().x / 2 + 55, 8));
 
 	ballLife2.setRadius(4.5);
 	ballLife2.setPointCount(30);
@@ -153,7 +144,20 @@ int Break_Out::run()
 			paddleSize.x = paddleWidth;
 			paddleSize.y = paddleHeight;
 			paddle.setSize(paddleSize);
+
 			paddlePosition.x = mouseposition.x - windowPosition.x - (paddleSize.x / 2);
+			//std::cout << "paddlePosition: " << paddlePosition.x;
+
+			if (paddlePosition.x > 600 - paddle.getSize().x)
+			{
+				//std::cout << "paddlePosition: " << paddlePosition.x;
+				paddlePosition.x = 600 - paddle.getSize().x;
+			}
+			else if (paddlePosition.x < 0)
+			{
+				paddlePosition.x = 0;
+			}
+
 			paddle.setPosition(paddlePosition);
 
 			if (ball.getPosition().x <= 0 || ball.getPosition().x >= (windowSize.x - 2 * ball.getRadius()))
@@ -167,23 +171,22 @@ int Break_Out::run()
 			}
 			if (ball.getPosition().y >= 400)
 			{
-				std::cout << "ball position:" << ball.getPosition().y;
+				//std::cout << "ball position:" << ball.getPosition().y;
 				ball.setPosition(ballStart);
 				ballMovement = ballStopped;
 				mBall = false;
 				lives--;
 			}
-			
+
 			float speed = sqrtf(pow(ballMovement.x, 2) + powf(ballMovement.y, 2));
 
 			//if (delay > 10 && ((ball.getPosition().y + (2*ball.getRadius())) >= paddle.getPosition().y) && (ball.getPosition().y + ball.getRadius()) <= (paddle.getPosition().y + paddle.getSize().y) && ball.getPosition().x >= paddle.getPosition().x && ball.getPosition().x <= (paddle.getPosition().x + paddle.getSize().x))
-			if (delay > 10 && collisionDetect(paddle, ball))
+			if (collisionDetect(paddle, ball))
 			{
 				//split into more lines with more variables. find out why left side of paddle is not correct
 
 				float angle = getAngle(paddle, ball);
 				ballMovement = bounceBall(ball, angle, speed);
-				delay = 0;
 			}
 
 			int count = 0;
@@ -209,11 +212,10 @@ int Break_Out::run()
 					drawList.getRectDrawingBegin()->erase(li);
 
 					//ballMovement = bounceBall(ball, angle, speed);
-					delay = 0;
 					score += 5;
-					std::cout << std::endl;
-					std::cout << "brick detect" << std::endl;
-					std::cout << "Score: " << score << std::endl;
+					//std::cout << std::endl;
+					//std::cout << "brick detect" << std::endl;
+					//std::cout << "Score: " << score << std::endl;
 					displayPoints.setString(std::to_string(score));
 					break;
 				}
@@ -229,7 +231,6 @@ int Break_Out::run()
 					window.close();
 			}
 
-			delay++;
 			window.clear();
 
 			drawList.letsDraw(window);
@@ -265,14 +266,21 @@ int Break_Out::run()
 			paddleSize.x = paddleWidth;
 			paddleSize.y = paddleHeight;
 			paddle.setSize(paddleSize);
+
 			paddlePosition.x = mouseposition.x - windowPosition.x - (paddleSize.x / 2);
+
+			if (paddlePosition.x > 600 - paddle.getSize().x)
+			{
+				//std::cout << "paddlePosition: " << paddlePosition.x;
+				paddlePosition.x = 600 - paddle.getSize().x;
+			}
+			else if (paddlePosition.x < 0)
+			{
+				paddlePosition.x = 0;
+			}
+
 			paddle.setPosition(paddlePosition);
-
-			ballMovement.x = (paddle.getPosition().x + (paddle.getSize().x) / 2) - ball.getRadius();
-			ballMovement.y = paddle.getPosition().y - 2 * ball.getRadius();
-
-			ball.setPosition(ballMovement);
-
+			ball.setPosition(paddlePosition.x + (paddle.getSize().x / 2) - ball.getRadius(), paddlePosition.y - (2 * ball.getRadius()) - 5);
 			while (window.pollEvent(event))
 			{
 				if (event.type == sf::Event::Closed)
@@ -280,13 +288,13 @@ int Break_Out::run()
 			}
 
 
-			
-			if(event.type == sf::Event::MouseButtonPressed)
+
+			if (event.type == sf::Event::MouseButtonPressed)
 			{
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
 					mBall = true;
-					
+
 					if (lives < 0)
 					{
 						lives = 3;
@@ -295,17 +303,24 @@ int Break_Out::run()
 						brickL->setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y * .025)), window);
 						for (std::vector <sf::RectangleShape*>::iterator li = drawList.getRectDrawingBegin()->begin(); drawList.getRectDrawingBegin()->size() != 0;)
 							drawList.getRectDrawingBegin()->erase(li);
-				
+
 						drawList.insertShape(*brickL);
 					}
-						
 
-					ballMovement.x = .5;
-					ballMovement.y = -1.75;
-					ball.move(ballMovement);
+					float speed = 2.5;
+					float random = 1.05 * rand();
+					ballMovement.x = cos(random)*speed;
+
+					ballMovement.y = sin(random)*speed;
+					if (ballMovement.y < 0)
+					{
+						ballMovement.y = -ballMovement.y;
+					}
+					//std::cout << "ballmovement.x: " << ballMovement.x << " ballmovement.y: " << ballMovement.y << std::endl;
+					//ball.move(ballMovement);
 				}
 			}
-			
+
 
 			window.clear();
 
@@ -315,7 +330,7 @@ int Break_Out::run()
 			window.draw(displayLife);
 			window.draw(displayPoints);
 			window.draw(topBorder);
-			
+
 			if (lives == 3)
 			{
 				window.draw(ballLife);
@@ -333,27 +348,21 @@ int Break_Out::run()
 			{
 				window.draw(gameOver);
 			}
-				
+
 
 			window.display();
 		}
 		if (lives == 0 || drawList.getRectDrawings().size() == 0)
 		{
 			lives--;
-			std::cout << std::endl;
+			//std::cout << std::endl;
 			if (lives == -1)
 			{
-				std::cout << "GAME OVER" << std::endl;
+				//std::cout << "GAME OVER" << std::endl;
 
 			}
-				
-			else
-				std::cout << "You Completed the round" << std::endl;
-
-			std::cout << "Final Score: " << score << std::endl;
 		}
 	}
-
 
 	return 0;
 }
@@ -369,7 +378,7 @@ float Break_Out::getAngle(sf::RectangleShape &paddle, sf::CircleShape &ball)
 
 	float angle = std::atan2f(relativePositionY, relativePositionX);
 
-	std::cout << "Relative Position: " << relativePositionX << " angle: " << angle << std::endl;
+	//std::cout << "Relative Position: " << relativePositionX << " angle: " << angle << std::endl;
 
 	return angle;
 }
