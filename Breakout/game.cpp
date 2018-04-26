@@ -41,7 +41,6 @@ Break_Out::Break_Out()
 
 	drawList.insertShape(ball);
 	paddleD.insertShape(paddle);
-	//paddleD.insertShape(topBorder);
 	drawList.insertShape(*brickL);
 }
 
@@ -75,8 +74,6 @@ int Break_Out::run()
 	displayScore.setString("Score ");
 	displayScore.setCharacterSize(18);
 	displayScore.setColor(sf::Color::Blue);
-	//displayScore.setOutlineColor(sf::Color::White);
-	//displayScore.setOutlineThickness(1);
 	displayScore.setStyle(sf::Text::Bold);
 
 	sf::Text displayPoints;
@@ -96,6 +93,16 @@ int Break_Out::run()
 	gameOver.setOutlineThickness(2);
 	gameOver.setStyle(sf::Text::Bold);
 	gameOver.setPosition(sf::Vector2f(window.getSize().x / 2 - 100, window.getSize().y / 2 - 15));
+
+	sf::Text youWin;
+	youWin.setFont(scoreFont);
+	youWin.setString("Congratulations!");
+	youWin.setCharacterSize(30);
+	youWin.setColor(sf::Color::Blue);
+	youWin.setOutlineColor(sf::Color::White);
+	youWin.setOutlineThickness(2);
+	youWin.setStyle(sf::Text::Bold);
+	youWin.setPosition(sf::Vector2f(window.getSize().x / 2 - 100, window.getSize().y / 2 - 15));
 
 	sf::Text displayLife;
 	displayLife.setFont(scoreFont);
@@ -138,7 +145,7 @@ int Break_Out::run()
 	brickL->setBrickArr(*(new sf::Vector2f(0, window.getSize().y)), sf::Color::Red, *(new sf::Vector2f((window.getSize().x)*0.05, window.getSize().y * .025)), window);
 	while (window.isOpen())
 	{
-		if (mBall && lives > 0)
+		if (mBall)
 		{
 			while (!window.hasFocus())
 			{
@@ -160,6 +167,9 @@ int Break_Out::run()
 			{
 				ballMovement.x = -ballMovement.x;
 			}
+
+			if (lives <= 0)
+				mBall = false;
 
 			if (ball.getPosition().y <= 30)
 			{
@@ -215,6 +225,11 @@ int Break_Out::run()
 					std::cout << "brick detect" << std::endl;
 					std::cout << "Score: " << score << std::endl;
 					displayPoints.setString(std::to_string(score));
+
+					if (drawList.getRectDrawings().size() == 0)
+					{
+						mBall = false;
+					}
 					break;
 				}
 
@@ -278,8 +293,6 @@ int Break_Out::run()
 				if (event.type == sf::Event::Closed)
 					window.close();
 			}
-
-
 			
 			if(event.type == sf::Event::MouseButtonPressed)
 			{
@@ -287,7 +300,7 @@ int Break_Out::run()
 				{
 					mBall = true;
 					
-					if (lives < 0)
+					if (lives <= 0)
 					{
 						lives = 3;
 						score = 0;
@@ -298,7 +311,6 @@ int Break_Out::run()
 				
 						drawList.insertShape(*brickL);
 					}
-						
 
 					ballMovement.x = .5;
 					ballMovement.y = -1.75;
@@ -333,24 +345,10 @@ int Break_Out::run()
 			{
 				window.draw(gameOver);
 			}
-				
+			if (drawList.getRectDrawings().size() == 0)
+				window.draw(youWin);
 
 			window.display();
-		}
-		if (lives == 0 || drawList.getRectDrawings().size() == 0)
-		{
-			lives--;
-			std::cout << std::endl;
-			if (lives == -1)
-			{
-				std::cout << "GAME OVER" << std::endl;
-
-			}
-				
-			else
-				std::cout << "You Completed the round" << std::endl;
-
-			std::cout << "Final Score: " << score << std::endl;
 		}
 	}
 
