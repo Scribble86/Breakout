@@ -230,8 +230,8 @@ int Break_Out::run()
 					//float angle = getAngle(*drawList.getRectDrawingBegin()->at(count), ball);
 					float angle;
 
-					if ((ball.getPosition().y + ball.getRadius()) > drawList.getRectDrawingBegin()->at(count)->getPosition().y &&
-						(ball.getPosition().y + ball.getRadius()) < (drawList.getRectDrawingBegin()->at(count)->getPosition().y) + drawList.getRectDrawingBegin()->at(count)->getSize().y)
+					if ((ball.getPosition().y + ball.getRadius()) >= drawList.getRectDrawingBegin()->at(count)->getPosition().y &&
+						(ball.getPosition().y + ball.getRadius()) <= (drawList.getRectDrawingBegin()->at(count)->getPosition().y) + drawList.getRectDrawingBegin()->at(count)->getSize().y)
 					{
 						ballMovement.x = -ballMovement.x;
 					}
