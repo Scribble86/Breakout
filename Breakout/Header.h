@@ -2,10 +2,10 @@
 *																					*
 *	PA 9: BreakOut!																	*
 *	Class: CPT_S 122, Spring 2018													*
-*	Team Members: Aaron Hanson														*
-*				  Nikita Chrysephan													*
-*				  Mariana Rodriguez													*
-*				  Connor															*
+*	Team Members: Aaron Hanson - data structures									*
+*				  Nikita Chrysstephan - physics										*
+*				  Mariana Rodriguez	- graphics										*
+*				  Connor - bricks													*
 *																					*
 *																					*
 *																					*
