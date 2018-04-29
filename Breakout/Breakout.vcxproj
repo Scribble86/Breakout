@@ -201,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="highscores.txt" />
+    <Text Include="readme.txt" />
     <Text Include="Project members.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
