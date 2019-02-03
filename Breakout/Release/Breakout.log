@@ -1,0 +1,12 @@
+﻿  breakoutmenu.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\breakoutmenu.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  brick.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\brick.h(4): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  bricks.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\bricks.h(2): fatal error C1083: Cannot open include file: 'SFML\Graphics.hpp': No such file or directory
+  displayBricks.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\brick.h(4): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Drawing.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\bricks.h(2): fatal error C1083: Cannot open include file: 'SFML\Graphics.hpp': No such file or directory
+  menu.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\menu.h(2): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
