@@ -1,1 +1,257 @@
-﻿  Breakout.vcxproj -> D:\Users\Scribble\OneDrive\Education\Spring Semester 2018\CptS 122\Breakout\Release\Breakout.exe
+﻿  Drawing.cpp
+  breakoutmenu.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\breakoutmenu.cpp(11): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  brick.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\brick.cpp(17): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\brick.cpp(19): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\brick.cpp(25): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\brick.cpp(24): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  bricks.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\bricks.cpp(43): warning C4305: 'argument': truncation from 'double' to 'float'
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\bricks.cpp(45): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  displayBricks.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\displaybricks.cpp(10): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\displaybricks.cpp(12): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  menu.cpp
+  game.cpp
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(23): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(24): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(26): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(27): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(56): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(89): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(99): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(106): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(116): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(118): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(126): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(130): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(131): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(133): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(134): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(148): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(152): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(156): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(158): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(158): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(171): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(172): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(301): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(302): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(338): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(338): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(346): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(70): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\sfml-2.4.2\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(77): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\sfml-2.4.2\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(85): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\sfml-2.4.2\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(95): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\sfml-2.4.2\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(105): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\sfml-2.4.2\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(115): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\sfml-2.4.2\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(124): warning C4996: 'sf::Text::setColor': was declared deprecated
+  d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\sfml-2.4.2\include\sfml\graphics\text.hpp(177): note: see declaration of 'sf::Text::setColor'
+d:\users\scribble\onedrive\education\spring semester 2018\cpts 122\breakout\breakout\game.cpp(234): warning C4101: 'angle': unreferenced local variable
+  Generating code
+  0 of 524 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Breakout.vcxproj -> D:\Users\Scribble\OneDrive\Education\Spring Semester 2018\CptS 122\Breakout\Release\Breakout.exe
